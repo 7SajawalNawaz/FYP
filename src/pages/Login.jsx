@@ -81,9 +81,9 @@ const Login = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center min-h-full bg-gray-100 px-4 py-14 pb-32">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-14 pb-32">
         <div className="flex flex-col bg-purple-100 items-center justify-center py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[400px] rounded-lg shadow-md">
-          {/* <img src={qec} alt="qec" className="w-24 mix-blend-multiply" /> */}
+          <img src="/Images/qec.jpg" alt="qec" className="w-24 mix-blend-multiply" />
           <h1 className="text-2xl md:text-4xl font-bold text-purple-900 py-2">
             Login
           </h1>
@@ -135,7 +135,7 @@ const Login = () => {
 
             <div className="py-4">
               <input
-                className="w-full p-2 border border-black rounded-md cursor-pointer text-white font-bold bg-purple-900 hover:bg-slate-800 transition-colors"
+                className="w-full p-2 border border-l-purple-900 rounded-md cursor-pointer text-white font-bold bg-purple-900 hover:bg-slate-800 transition-colors"
                 type="submit"
                 value={`${loading ? "Signing.." : "Login"}`}
               />

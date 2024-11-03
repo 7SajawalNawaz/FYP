@@ -63,9 +63,14 @@ const Sidebar = () => {
 
   const subMenusList = [
     {
-      name: "Reports",
+      name: "QEC-Services",
+      icon: HiOutlineBookOpen,
+      menus: [ "Degree-Attestaion", "HEC-E-Portal" , "Accredition-Councils","Scholarships" , "Employer-Surveys" , "Alumni-Surveys" , "Student-Evaluation" , "Faculty-Surveys"],
+    },
+    {
+      name: "Reports/Forms",
       icon: TbReportAnalytics,
-      menus: ["SAR", "SIPE", "ResearchPaper", "UPR", "IPE"],
+      menus: ["SAR", "QECs","YPR", "RIPE"],
     },
     {
       name: "CapacityBuilding",
@@ -77,8 +82,10 @@ const Sidebar = () => {
       icon: HiOutlineBookOpen,
       menus: ["Departments", "Programs", "Faculty", "AssessmentTeam"],
     },
-    { name: "Functions", icon: TbFunction, menus: ["Faculty-Training"] },
-    { name: "Downloads", icon: HiDownload, menus: ["Manual", "HEC-Rules"] },
+    { name: "Functions", icon: TbFunction, menus: ["Faculty-Training" , "News&Events"] },
+    { name: "Downloads", icon: HiDownload, menus: ["Manual", "HEC-Rules" , "GEP-Policy"] },
+
+    
   ];
 
   return (
@@ -113,9 +120,9 @@ const Sidebar = () => {
         {/* Sidebar Header */}
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300 mx-3 mt-12 md:mt-0">
           <img
-            src="https://aust.edu.pk/wp-content/uploads/2022/04/Picture1_0-400x390.png"
+            src="/Images/qec.jpg"
             width={45}
-            alt="Logo"
+            alt="qec"
           />
           <span className="text-xl px-4 whitespace-pre text-purple-800">
             QEC-AUST
@@ -135,7 +142,7 @@ const Sidebar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to="/news-event"
                 className="link text-sm"
@@ -144,7 +151,7 @@ const Sidebar = () => {
                 <TbNews size={20} className="min-w-max" />
                 News & Events
               </NavLink>
-            </li>
+            </li> */}
 
             {/* Submenus */}
             {open && (
@@ -160,7 +167,7 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to="/pro-formas"
-                className="link text-sm"
+                className="link text-xs sm:text-sm"
                 onClick={() => setOpen(false)}
               >
                 <AiOutlineAppstore size={20} className="min-w-max" />

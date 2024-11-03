@@ -11,9 +11,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. John Doe",
+      name: "Prof Dr Mujaddad Ur Rehman",
       message: "Welcome to the Department of Microbiology. We aim to foster an environment that promotes research and academic excellence.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/Micro.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/microbiology" },
@@ -21,25 +21,7 @@ const departmentsData = [
       { label: "Student Resources", url: "https://aust.edu/microbiology/resources" },
     ],
   },
-  {
-    name: "Food Science and Technology",
-    contact: {
-      office: "Food Science Block – AUST",
-      phone: "+92 992 811745",
-      email: "hodfoodscience@aust.edu.pk",
-      hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
-    },
-    chairman: {
-      name: "Dr. Alice Green",
-      message: "Our department focuses on the science behind food and its technology.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
-    },
-    links: [
-      { label: "Department Website", url: "https://aust.edu/foodscience" },
-      { label: "Research Publications", url: "https://aust.edu/foodscience/research" },
-      { label: "Student Resources", url: "https://aust.edu/foodscience/resources" },
-    ],
-  },
+  
   {
     name: "Medical Lab Technology",
     contact: {
@@ -49,9 +31,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Bob White",
+      name: "Dr Azam Hayat",
       message: "Explore the vital role of medical lab technologies in healthcare.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/mlt.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/medicallab" },
@@ -68,9 +50,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Carol Smith",
+      name: "Dr Khalid Mehmood",
       message: "Join us to delve into the world of pharmaceuticals and healthcare.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/pharmacy.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/pharmacy" },
@@ -87,9 +69,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Frank Miller",
+      name: "Dr Nusrat Shaheen",
       message: "Discover the biochemical processes that govern life.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/biochem.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/biochemistry" },
@@ -106,9 +88,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Grace Lee",
+      name: "Dr Waseem Ul Haq",
       message: "Engage with the beauty and logic of mathematics with us.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/math.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/mathematics" },
@@ -125,9 +107,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Emily Davis",
+      name: "Dr Khurram Shoaib",
       message: "Join us to explore the fascinating world of chemistry and its applications.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/chemistry.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/chemistry" },
@@ -144,9 +126,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Alan Turing",
+      name: "Dr Muhammad Naeem",
       message: "Delve into the world of technology and computer science with our innovative programs.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/cs.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/computer-science" },
@@ -163,9 +145,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Isaac Newton",
+      name: "Dr Bin Amin",
       message: "Explore the fundamental principles that govern the universe.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/phy.jpg", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/physics" },
@@ -182,14 +164,33 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. John Muir",
+      name: "Dr Zahid Bhatti",
       message: "Join us in exploring our planet's processes and resources.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/earth.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/earth-science" },
       { label: "Research Publications", url: "https://aust.edu/earth-science/research" },
       { label: "Student Resources", url: "https://aust.edu/earth-science/resources" },
+    ],
+  },
+  {
+    name: "Food Science and Technology",
+    contact: {
+      office: "Food Science Block – AUST",
+      phone: "+92 992 811745",
+      email: "hodfoodscience@aust.edu.pk",
+      hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
+    },
+    chairman: {
+      name: "Prof Dr Mujaddad Ur Rehman",
+      message: "Welcome to the Department of Microbiology. We aim to foster an environment that promotes research and academic excellence.",
+      image: "/Images/HOD/Micro.png", // Replace with actual image URL
+    },
+    links: [
+      { label: "Department Website", url: "https://aust.edu/foodscience" },
+      { label: "Research Publications", url: "https://aust.edu/foodscience/research" },
+      { label: "Student Resources", url: "https://aust.edu/foodscience/resources" },
     ],
   },
   {
@@ -201,9 +202,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Charles Darwin",
+      name: "Dr Siraj",
       message: "Discover the diversity of animal life with us.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/zoology.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/zoology" },
@@ -211,44 +212,8 @@ const departmentsData = [
       { label: "Student Resources", url: "https://aust.edu/zoology/resources" },
     ],
   },
-  {
-    name: "Botany",
-    contact: {
-      office: "Botany Block – AUST",
-      phone: "+92 992 811755",
-      email: "hodbotany@aust.edu.pk",
-      hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
-    },
-    chairman: {
-      name: "Dr. Gregor Mendel",
-      message: "Explore the science of plant life and its ecological importance.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
-    },
-    links: [
-      { label: "Department Website", url: "https://aust.edu/botany" },
-      { label: "Research Publications", url: "https://aust.edu/botany/research" },
-      { label: "Student Resources", url: "https://aust.edu/botany/resources" },
-    ],
-  },
-  {
-    name: "Statistics",
-    contact: {
-      office: "Statistics Block – AUST",
-      phone: "+92 992 811756",
-      email: "hodstatistics@aust.edu.pk",
-      hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
-    },
-    chairman: {
-      name: "Dr. Florence Nightingale",
-      message: "Join us to learn about data analysis and statistical methods.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
-    },
-    links: [
-      { label: "Department Website", url: "https://aust.edu/statistics" },
-      { label: "Research Publications", url: "https://aust.edu/statistics/research" },
-      { label: "Student Resources", url: "https://aust.edu/statistics/resources" },
-    ],
-  },
+ 
+  
   {
     name: "Economics",
     contact: {
@@ -258,9 +223,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Adam Smith",
+      name: "Mr  Sardar Fawad Saleem  ",
       message: "Explore economic theories and their applications.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/ecnomics.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/economics" },
@@ -277,9 +242,9 @@ const departmentsData = [
       hours: "Mon – Fri 9:00A.M. – 4:00P.M.",
     },
     chairman: {
-      name: "Dr. Michael Porter",
+      name: "Dr Muhammad Mudassar",
       message: "Our department focuses on developing managerial skills and business acumen in our students.",
-      image: "https://via.placeholder.com/150", // Replace with actual image URL
+      image: "/Images/HOD/managment.png", // Replace with actual image URL
     },
     links: [
       { label: "Department Website", url: "https://aust.edu/management" },

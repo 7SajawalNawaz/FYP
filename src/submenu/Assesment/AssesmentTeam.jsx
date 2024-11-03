@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Team picture URL
-const teamPicture = "https://via.placeholder.com/800x300"; // Replace with actual team picture URL
+const teamPicture = "/Images/training1.jpg"; // Replace with actual team picture URL
 
 // Faculty members data
 const facultyMembers = [

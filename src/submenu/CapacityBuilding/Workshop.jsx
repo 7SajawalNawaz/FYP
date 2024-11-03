@@ -6,6 +6,7 @@ const workshopsData = [
     date: "November 10, 2024",
     description: "An introductory workshop on data science concepts and tools, including Python, Pandas, and Machine Learning.",
   },
+  
   {
     title: "Web Development Bootcamp",
     date: "December 5, 2024",
