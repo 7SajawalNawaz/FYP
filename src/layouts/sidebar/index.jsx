@@ -70,7 +70,7 @@ const Sidebar = () => {
     {
       name: "Reports/Forms",
       icon: TbReportAnalytics,
-      menus: ["SAR", "QECs","YPR", "RIPE"],
+      menus: ["SAR", "QECs","YPR", "RIPE" , "Faculty-Resume" , "PHDPassout" , "MphillPassout"],
     },
     {
       name: "CapacityBuilding",

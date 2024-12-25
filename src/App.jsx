@@ -19,7 +19,6 @@ import Program from "./submenu/Assesment/Program";
 import Mannual from "./submenu/Downloads/Mannual";
 import HecRule from "./submenu/Downloads/HecRule";
 import Faculty from "./submenu/Functions/Faculty";
-import ResearchPaper from "./pages/ResearchPaper";
 import Proformas from "./submenu/Mphill-phd-performas/Proformas";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -35,6 +34,11 @@ import EmployerSurvey from "./submenu/Services/EmployerSurvey";
 import AlumniSurvey from "./submenu/Services/AlumniSurvey";
 import SCE from "./submenu/Services/SCE";
 import FacultyEvaluation from "./submenu/Services/Faculty-Surveys";
+import FacultyResume from "./submenu/Reports/FacultyResume";
+import Logout from "./pages/Logout";
+import SplashScreen from "./pages/SplashScreen";
+import PHDPassout from "./submenu/Reports/PHDPassout";
+import MphillPassout from "./submenu/Reports/MphillPassout";
 
 
 const App = () => {
@@ -45,13 +49,17 @@ const App = () => {
     <>
 
         <Routes>
+        <Route path="/" element={<SplashScreen />} />
           <Route path="/login"  element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/logout" element={<Logout />} />
+
 
 
           <Route element={<RootLayout/>} >
+          
 
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           
           <Route path="/affiliated-colleges" element={<AffilliatedCollege />} />
           <Route path="/mous" element={<MOUs />} />
@@ -76,9 +84,13 @@ const App = () => {
           {/* <Route path="/reports/forms/ResearchPaper" element={<ResearchPaper />} /> */}
           <Route path="/reports/forms/ypr" element={<UPR />} />
           <Route path="/reports/forms/ripe" element={<IPE />} />
+          
 
-          {/* <Route element={<PrivateRoute />}>
-          </Route> */}
+          <Route element={<PrivateRoute />}>
+          <Route path="/reports/forms/Faculty-Resume" element={<FacultyResume/>} />
+          <Route path="/reports/forms/PHDPassout" element={<PHDPassout />} />
+          <Route path="/reports/forms/MphillPassout" element={<MphillPassout />} />
+          </Route>
           
           
 

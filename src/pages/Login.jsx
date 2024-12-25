@@ -51,7 +51,6 @@ const Login = () => {
         const data = response.data;
 
         window.localStorage.setItem("loginData", JSON.stringify(data.data));
-
         toast.success(data.message, {
           position: "top-right",
           autoClose: true,
@@ -62,8 +61,8 @@ const Login = () => {
         setFormErr(intialFormErr);
 
         setLoading(false);
-
-        navigate("/");
+        
+        navigate("/home");
       } catch (error) {
         setLoading(false);
 
