@@ -79,7 +79,7 @@ const MphillPassout = () => {
           supervisor: formData.supervisor,
         };
 
-        const response = await axios.post("/ms-mphil/ms-mphil-passout", requestBody, {
+        const response = await axios.post("/msmphil/ms-mphil-passout", requestBody, {
           headers,
         });
         const data = response.data;
