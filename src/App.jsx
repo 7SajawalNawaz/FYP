@@ -39,60 +39,76 @@ import Logout from "./pages/Logout";
 import SplashScreen from "./pages/SplashScreen";
 import PHDPassout from "./submenu/Reports/PHDPassout";
 import MphillPassout from "./submenu/Reports/MphillPassout";
+import AdminDashboard from "./AdminPages/AdminDashboard";
+import AdminRoute from "./PrivateRoute/AdminRoute";
+import { AuthProvider } from "./Context/AuthContext";
+import AdminLayout from "./Admin/AdminLayout";
+import PHDPassouts from "./AdminPages/PHDPassouts";
+import MphillPassouts from "./AdminPages/MphillPassouts";
+import FacultyResumes from "./AdminPages/FacultyResumes";
 
 
 const App = () => {
-
-
-
   return (
     <>
-
-        <Routes>
+    <AuthProvider>
+      <Routes>
         <Route path="/" element={<SplashScreen />} />
-          <Route path="/login"  element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/logout" element={<Logout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<Logout />} />
 
-
-
-          <Route element={<RootLayout/>} >
-          
-
+        <Route element={<RootLayout />}>
           <Route path="/home" element={<Home />} />
-          
+
           <Route path="/affiliated-colleges" element={<AffilliatedCollege />} />
           <Route path="/mous" element={<MOUs />} />
 
           {/*QEC Services */}
-          <Route path="/qec-services/HEC-E-Portal" element={<HecPortal/>}/>
-          <Route path="/qec-services/Degree-Attestaion" element={<DegreeAttestation/>}/>
-          <Route path="/qec-services/Accredition-Councils" element={<AccreditationCouncil/>}/>
-          <Route path="/qec-services/Scholarships" element={<Scholarships/>}/>
-          <Route path="/qec-services/Employer-Surveys" element={<EmployerSurvey />} />
-          <Route path="/qec-services/Alumni-Surveys" element={<AlumniSurvey />} />
-          <Route path="/qec-services/Student-Evaluation" element={<SCE/>} />
-          <Route path="/qec-services/Faculty-Surveys" element={<FacultyEvaluation/>} />
-
+          <Route path="/qec-services/HEC-E-Portal" element={<HecPortal />} />
+          <Route
+            path="/qec-services/Degree-Attestaion"
+            element={<DegreeAttestation />}
+          />
+          <Route
+            path="/qec-services/Accredition-Councils"
+            element={<AccreditationCouncil />}
+          />
+          <Route path="/qec-services/Scholarships" element={<Scholarships />} />
+          <Route
+            path="/qec-services/Employer-Surveys"
+            element={<EmployerSurvey />}
+          />
+          <Route
+            path="/qec-services/Alumni-Surveys"
+            element={<AlumniSurvey />}
+          />
+          <Route path="/qec-services/Student-Evaluation" element={<SCE />} />
+          <Route
+            path="/qec-services/Faculty-Surveys"
+            element={<FacultyEvaluation />}
+          />
 
           {/* Reports (Protected) */}
-          
-          
+
           <Route path="/reports/forms/sar" element={<SAR />} />
           <Route path="/reports/forms/qecs" element={<SIPE />} />
           {/* Research Paper (Protected) */}
           {/* <Route path="/reports/forms/ResearchPaper" element={<ResearchPaper />} /> */}
           <Route path="/reports/forms/ypr" element={<UPR />} />
           <Route path="/reports/forms/ripe" element={<IPE />} />
-          
 
           <Route element={<PrivateRoute />}>
-          <Route path="/reports/forms/Faculty-Resume" element={<FacultyResume/>} />
-          <Route path="/reports/forms/PHDPassout" element={<PHDPassout />} />
-          <Route path="/reports/forms/MphillPassout" element={<MphillPassout />} />
+            <Route
+              path="/reports/forms/Faculty-Resume"
+              element={<FacultyResume />}
+            />
+            <Route path="/reports/forms/PHDPassout" element={<PHDPassout />} />
+            <Route
+              path="/reports/forms/MphillPassout"
+              element={<MphillPassout />}
+            />
           </Route>
-          
-          
 
           {/* Capacity Building */}
           <Route path="/capacitybuilding/service" element={<Service />} />
@@ -119,15 +135,30 @@ const App = () => {
           {/* Downloads */}
           <Route path="/downloads/manual" element={<Mannual />} />
           <Route path="/downloads/hec-rules" element={<HecRule />} />
-          <Route path="/downloads/gep-policy" element={<Gep/>} />
+          <Route path="/downloads/gep-policy" element={<Gep />} />
 
           {/* pro-formas  */}
           <Route path="/pro-formas" element={<Proformas />} />
-          </Route>
-        </Routes>
-      
+        </Route>
 
+        <Route element={<AdminLayout/>}>
+
+        <Route element={<AdminRoute/>}>
+
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/phdpassouts" element={<PHDPassouts />}/> 
+        <Route path="/admin/mphilpassouts" element={<MphillPassouts />}/>
+        <Route path="/admin/facultyresumes" element={<FacultyResumes />}/>
+
+        </Route>
+        
+        </Route>
+
+      </Routes>
+
+      
       <ToastContainer />
+      </AuthProvider>
     </>
   );
 };

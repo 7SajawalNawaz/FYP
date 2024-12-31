@@ -113,7 +113,7 @@ const PHDPassout = () => {
 
   return (
     <>
-      <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 shadow-lg flex justify-end mr-6 rounded-xl">
+      <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
         <Logout />
       </nav>
 

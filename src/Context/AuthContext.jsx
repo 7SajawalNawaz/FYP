@@ -1,27 +1,36 @@
-// src/context/AuthContext.js
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);  // Holds user state
+  const [user, setUser] = useState(null);
+  const [isAuthChecked, setIsAuthChecked] = useState(false); // Tracks if the auth check is complete
   const navigate = useNavigate();
 
-  // Function to log out the user
+  useEffect(() => {
+    const token = localStorage.getItem("loginData");
+    if (token) {
+      try {
+        const decodedUser = jwtDecode(token);
+        setUser(decodedUser);
+      } catch (error) {
+        console.error("Invalid token:", error);
+        localStorage.removeItem("loginData");
+      }
+    }
+    setIsAuthChecked(true); // Mark auth check as complete
+  }, []);
+
   const logout = () => {
-    // Step 1: Remove token from local storage
     localStorage.removeItem("loginData");
-
-    // Step 2: Clear the user state
     setUser(null);
-
-    // Step 3: Redirect to login page
     navigate("/login");
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, logout }}>
+    <AuthContext.Provider value={{ user, isAuthChecked, setUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

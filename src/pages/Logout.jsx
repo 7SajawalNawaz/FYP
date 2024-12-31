@@ -16,7 +16,7 @@ const Logout = () => {
     });
 
     // Redirect to the homepage
-    navigate("/");
+    navigate("/login");
   };
 
   return (
