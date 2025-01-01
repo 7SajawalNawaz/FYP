@@ -55,132 +55,177 @@ import UpdateMS from "./AdminPages/Update/UpdateMS";
 import DeleteMS from "./AdminPages/Delete/DeleteMS";
 import DeletePHD from "./AdminPages/Delete/DeletePHD";
 import DeleteFR from "./AdminPages/Delete/DeleteFR";
-
+import Evaluation from "./AdminPages/EvaluationData/Evaluation";
+import Researchupload from "./submenu/Reports/Researchupload";
+import PendingApproval from "./pages/PendingApproval";
+import ResearchData from "./AdminPages/ResearchData";
+import DeleteResearch from "./AdminPages/Delete/DeleteResearch";
+import ConfirmDeleteModal from "./AdminPages/Delete/ConfirmDelete";
 
 const App = () => {
   return (
     <>
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<SplashScreen />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/logout" element={<Logout />} />
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<SplashScreen />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/logout" element={<Logout />} />
 
-        <Route element={<RootLayout />}>
-          <Route path="/home" element={<Home />} />
+          <Route element={<RootLayout />}>
+            <Route path="/home" element={<Home />} />
 
-          <Route path="/affiliated-colleges" element={<AffilliatedCollege />} />
-          <Route path="/mous" element={<MOUs />} />
-
-          {/*QEC Services */}
-          <Route path="/qec-services/HEC-E-Portal" element={<HecPortal />} />
-          <Route
-            path="/qec-services/Degree-Attestaion"
-            element={<DegreeAttestation />}
-          />
-          <Route
-            path="/qec-services/Accredition-Councils"
-            element={<AccreditationCouncil />}
-          />
-          <Route path="/qec-services/Scholarships" element={<Scholarships />} />
-          <Route
-            path="/qec-services/Employer-Surveys"
-            element={<EmployerSurvey />}
-          />
-          <Route
-            path="/qec-services/Alumni-Surveys"
-            element={<AlumniSurvey />}
-          />
-          <Route path="/qec-services/Student-Evaluation" element={<SCE />} />
-          <Route
-            path="/qec-services/Faculty-Surveys"
-            element={<FacultyEvaluation />}
-          />
-
-          {/* Reports (Protected) */}
-
-          <Route path="/reports/forms/sar" element={<SAR />} />
-          <Route path="/reports/forms/qecs" element={<SIPE />} />
-          {/* Research Paper (Protected) */}
-          {/* <Route path="/reports/forms/ResearchPaper" element={<ResearchPaper />} /> */}
-          <Route path="/reports/forms/ypr" element={<UPR />} />
-          <Route path="/reports/forms/ripe" element={<IPE />} />
-
-          <Route element={<PrivateRoute />}>
             <Route
-              path="/reports/forms/Faculty-Resume"
-              element={<FacultyResume />}
+              path="/affiliated-colleges"
+              element={<AffilliatedCollege />}
             />
-            <Route path="/reports/forms/PHDPassout" element={<PHDPassout />} />
+            <Route path="/mous" element={<MOUs />} />
+
+            {/*QEC Services */}
+            <Route path="/qec-services/HEC-E-Portal" element={<HecPortal />} />
             <Route
-              path="/reports/forms/MphillPassout"
-              element={<MphillPassout />}
+              path="/qec-services/Degree-Attestaion"
+              element={<DegreeAttestation />}
             />
+            <Route
+              path="/qec-services/Accredition-Councils"
+              element={<AccreditationCouncil />}
+            />
+            <Route
+              path="/qec-services/Scholarships"
+              element={<Scholarships />}
+            />
+            <Route
+              path="/qec-services/Employer-Surveys"
+              element={<EmployerSurvey />}
+            />
+            <Route
+              path="/qec-services/Alumni-Surveys"
+              element={<AlumniSurvey />}
+            />
+            <Route path="/qec-services/Student-Evaluation" element={<SCE />} />
+            <Route
+              path="/qec-services/Faculty-Surveys"
+              element={<FacultyEvaluation />}
+            />
+
+            {/* Reports (Protected) */}
+
+            <Route path="/reports/forms/sar" element={<SAR />} />
+            <Route path="/reports/forms/qecs" element={<SIPE />} />
+            {/* Research Paper (Protected) */}
+            {/* <Route path="/reports/forms/ResearchPaper" element={<ResearchPaper />} /> */}
+            <Route path="/reports/forms/ypr" element={<UPR />} />
+            <Route path="/reports/forms/ripe" element={<IPE />} />
+
+            <Route element={<PrivateRoute />}>
+              <Route
+                path="/reports/forms/Faculty-Resume"
+                element={<FacultyResume />}
+              />
+              <Route
+                path="/reports/forms/PHDPassout"
+                element={<PHDPassout />}
+              />
+              <Route
+                path="/reports/forms/MphillPassout"
+                element={<MphillPassout />}
+              />
+              <Route path="/reports/forms/ResearchUpload" element={<Researchupload />} />
+              <Route path="/pending-approval" element={<PendingApproval />} />
+            </Route>
+
+            {/* Capacity Building */}
+            <Route path="/capacitybuilding/service" element={<Service />} />
+            <Route path="/capacitybuilding/workshop" element={<Workshop />} />
+            <Route path="/capacitybuilding/training" element={<Training />} />
+            <Route
+              path="/capacitybuilding/presentations"
+              element={<Presentation />}
+            />
+
+            {/* Assessments */}
+            <Route path="/assessments/departments" element={<Departments />} />
+            <Route path="/assessments/programs" element={<Program />} />
+            <Route path="/assessments/faculty" element={<Faculty4 />} />
+            <Route
+              path="/assessments/assessmentteam"
+              element={<AssesmentTeam />}
+            />
+
+            {/* Functions */}
+            <Route path="/functions/faculty-training" element={<Faculty />} />
+            <Route path="/functions/News&Events" element={<NewsandEvents />} />
+
+            {/* Downloads */}
+            <Route path="/downloads/manual" element={<Mannual />} />
+            <Route path="/downloads/hec-rules" element={<HecRule />} />
+            <Route path="/downloads/gep-policy" element={<Gep />} />
+
+            {/* pro-formas  */}
+            <Route path="/pro-formas" element={<Proformas />} />
           </Route>
 
-          {/* Capacity Building */}
-          <Route path="/capacitybuilding/service" element={<Service />} />
-          <Route path="/capacitybuilding/workshop" element={<Workshop />} />
-          <Route path="/capacitybuilding/training" element={<Training />} />
-          <Route
-            path="/capacitybuilding/presentations"
-            element={<Presentation />}
-          />
+          <Route element={<AdminLayout />}>
+            <Route element={<AdminRoute />}>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              <Route path="/admin/phdpassouts" element={<PHDPassouts />} />
+              <Route path="/admin/mphilpassouts" element={<MphillPassouts />} />
+              <Route
+                path="/admin/facultyresumes"
+                element={<FacultyResumes />}
+              />
 
-          {/* Assessments */}
-          <Route path="/assessments/departments" element={<Departments />} />
-          <Route path="/assessments/programs" element={<Program />} />
-          <Route path="/assessments/faculty" element={<Faculty4 />} />
-          <Route
-            path="/assessments/assessmentteam"
-            element={<AssesmentTeam />}
-          />
+              {/* Add new Component */}
+              <Route
+                path="/admin/new/facultyresume"
+                element={<AddFacultyResume />}
+              />
+              <Route
+                path="/admin/new/msmphillpassout"
+                element={<AddMphillPassout />}
+              />
+              <Route path="/admin/new/phdpassout" element={<AddPHDPassout />} />
 
-          {/* Functions */}
-          <Route path="/functions/faculty-training" element={<Faculty />} />
-          <Route path="/functions/News&Events" element={<NewsandEvents />} />
+              {/* update Route  */}
 
-          {/* Downloads */}
-          <Route path="/downloads/manual" element={<Mannual />} />
-          <Route path="/downloads/hec-rules" element={<HecRule />} />
-          <Route path="/downloads/gep-policy" element={<Gep />} />
+              <Route
+                path="/admin/update/facultyresume/:id"
+                element={<UpdateFR />}
+              />
+              <Route
+                path="/admin/update/phdpassout/:id"
+                element={<UpdatePHD />}
+              />
+              <Route
+                path="/admin/update/msmphillpassout/:id"
+                element={<UpdateMS />}
+              />
 
-          {/* pro-formas  */}
-          <Route path="/pro-formas" element={<Proformas />} />
-        </Route>
+              {/* Delete Route  */}
+              <Route
+                path="/admin/delete/msmphillpassout/:id"
+                element={<DeleteMS />}
+              />
+              <Route
+                path="/admin/delete/phdpassout/:id"
+                element={<DeletePHD />}
+              />
+              <Route
+                path="/admin/delete/facultyresume/:id"
+                element={<DeleteFR />}
+              />
 
-        <Route element={<AdminLayout/>}>
+              <Route path="/admin/survey/data" element={<Evaluation />} />
+              <Route path="/admin/research/data" element={<ResearchData />} />
+              <Route path="/admin/research/data/delete" element={<DeleteResearch />} />
+              <Route path="/admin/confirm/delete" element={<ConfirmDeleteModal />} />
+              
+            </Route>
+          </Route>
+        </Routes>
 
-        <Route element={<AdminRoute/>}>
-
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/phdpassouts" element={<PHDPassouts />}/> 
-        <Route path="/admin/mphilpassouts" element={<MphillPassouts />}/>
-        <Route path="/admin/facultyresumes" element={<FacultyResumes />}/>
-        <Route path="/admin/new/facultyresume" element={<AddFacultyResume />} />
-        <Route path="/admin/new/msmphillpassout" element={<AddMphillPassout />} />
-        <Route path="/admin/new/phdpassout" element={<AddPHDPassout/>} />
-
-      {/* update Route  */}
-
-      <Route path="/admin/update/facultyresume/:id" element={<UpdateFR />} />
-      <Route path="/admin/update/phdpassout/:id" element={<UpdatePHD />} />
-      <Route path="/admin/update/msmphillpassout/:id" element={<UpdateMS />} />
-
-      {/* Delete Route  */}
-      <Route path="/admin/delete/msmphillpassout/:id" element={<DeleteMS />} />
-      <Route path="/admin/delete/phdpassout/:id" element={<DeletePHD />} />
-      <Route path="/admin/delete/facultyresume/:id" element={<DeleteFR />} />
-
-        </Route>
-        
-        </Route>
-
-      </Routes>
-
-      
-      <ToastContainer />
+        <ToastContainer />
       </AuthProvider>
     </>
   );

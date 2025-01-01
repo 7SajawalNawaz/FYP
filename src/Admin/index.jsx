@@ -12,8 +12,10 @@ import {
 } from "react-icons/hi";
 import { TbFunction, TbNews, TbReportAnalytics } from "react-icons/tb";
 import { RiBuilding3Line } from "react-icons/ri";
+import { GiArchiveResearch } from "react-icons/gi";
 import { FaUserGraduate } from "react-icons/fa";
 import { GiGraduateCap } from "react-icons/gi";
+import { FcSurvey } from "react-icons/fc";
 import { MdMenu } from "react-icons/md";
 
 const Sidebar = () => {
@@ -153,6 +155,28 @@ const Sidebar = () => {
               >
                 <HiOutlineAnnotation size={20} className="min-w-max" />
                 Faculty Resume
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/admin/survey/data"
+                className="link text-sm"
+                onClick={() => setOpen(false)}
+              >
+                <FcSurvey size={20} className="min-w-max" />
+                Evaluation & Surveys
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/admin/research/data"
+                className="link text-xs sm:text-sm"
+                onClick={() => setOpen(false)}
+              >
+                <GiArchiveResearch  size={20} className="min-w-max" />
+                Research Data
               </NavLink>
             </li>
 
