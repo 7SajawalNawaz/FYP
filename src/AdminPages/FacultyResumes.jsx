@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "../utilis/baseUrl";
 import moment from "moment";
@@ -37,7 +37,7 @@ const FacultyResume = () => {
           return;
         }
 
-        const response = await axios.get("/form/list/of/faculty/resume", {
+        const response = await axios.get("/form/list/of/faculty/resume/:id", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -92,19 +92,19 @@ const FacultyResume = () => {
 
   return (
     <div className="mr-6">
-      <div className="bg-purple-100 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
         <div className="mb-6 flex justify-end">
           <button
             onClick={() => {
-              navigate("/facultyresume/new");
+              navigate("/admin/new/facultyresume");
             }}
-            className="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm sm:text-base"
+            className="bg-gradient-to-r from-orange-400 to-purple-700 text-white px-4 py-2 rounded-lg hover:from-purple-900 hover:to-orange-700 text-sm shadow-2xl sm:text-base"
           >
-            Add New Faculty Resume
+           Add New Faculty Resume
           </button>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-purple-950 mb-8 text-center">
+        <h1 className="text-white text-2xl sm:text-3xl font-bold text-purple-950 mb-8 text-center">
           Faculty Resume List
         </h1>
 
@@ -120,12 +120,12 @@ const FacultyResume = () => {
               className="w-full sm:w-64 md:w-80 lg:w-96 px-4 py-2 border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
-          <button
+          {/* <button
             onClick={handleSearchClick}
             className="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-700 ml-4"
           >
             Search
-          </button>
+          </button> */}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -182,15 +182,13 @@ const FacultyResume = () => {
 
                 <div className="flex justify-end space-x-2 mt-4">
                   <button
-                    onClick={() => navigate(`/facultyresume/update/${resume._id}`)}
-                    className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                    onClick={() => navigate(`/admin/update/facultyresume/${resume._id}`)}
+                    className="px-4 py-2 text-white bg-purple-900 rounded-lg hover:bg-purple-500"
                   >
                     Update
                   </button>
                   <button
-                    onClick={() => {
-                      // Add delete functionality here
-                    }}
+                     onClick={() => navigate(`/admin/delete/facultyresume/${resume._id}`)}
                     className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
                   >
                     Delete
@@ -205,24 +203,25 @@ const FacultyResume = () => {
           )}
         </div>
 
-        {/* Pagination Controls */}
-        <div className="flex justify-center mt-6">
+        
+      </div>
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-6">
           <button
             onClick={() => handlePagination(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 mr-2"
+            className="px-4 py-2 bg-gradient-to-r from-orange-600 to-purple-700 text-white rounded-lg hover:from-purple-900 hover:to-orange-700 shadow-2xl  mr-2"
           >
             Previous
           </button>
           <button
             onClick={() => handlePagination(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
+            className="px-4 py-2 bg-gradient-to-r from-orange-600 to-purple-700 text-white hover:from-purple-900 hover:to-orange-700 rounded-lg shadow-2xl "
           >
             Next
           </button>
         </div>
-      </div>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const MPhilPassout = () => {
           return;
         }
 
-        const response = await axios.get("/msmphil/get/ms/mphil/passout", {
+        const response = await axios.get("/msmphil/get/ms/mphil/passout/:id", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -91,19 +91,19 @@ const MPhilPassout = () => {
 
   return (
     <div className="mr-6">
-      <div className="bg-purple-100 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
         <div className="mb-6 flex justify-end">
           <button
             onClick={() => {
-              navigate("/msmphilpassout/new");
+              navigate("/admin/new/msmphillpassout");
             }}
-            className="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-700 text-sm sm:text-base"
+            className=" bg-gradient-to-r from-orange-400 to-purple-700 hover:from-purple-900 hover:to-orange-700 shadow-2xl text-white px-4 py-2 rounded-lg  text-sm sm:text-base"
           >
             Add New MPhil Passout
           </button>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-purple-950 mb-8 text-center">
+        <h1 className="text-2xl  text-white sm:text-3xl font-bold text-purple-950 mb-8 text-center">
           MPhil Passout List
         </h1>
 
@@ -119,12 +119,12 @@ const MPhilPassout = () => {
               className="w-full sm:w-64 md:w-80 lg:w-96 px-4 py-2 border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
-          <button
+          {/* <button
             onClick={handleSearchClick}
             className="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-700 ml-4"
           >
             Search
-          </button>
+          </button> */}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -152,15 +152,14 @@ const MPhilPassout = () => {
 
                 <div className="flex justify-end space-x-2 mt-4">
                   <button
-                    onClick={() => navigate(`/msmphilpassout/update/${passout._id}`)}
-                    className="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                    onClick={() => navigate(`/admin/update/msmphillpassout/${passout._id}`)}
+                    className="px-4 py-2 text-white bg-purple-500 rounded-lg hover:bg-purple-700"
                   >
                     Update
                   </button>
                   <button
-                    onClick={() => {
-                      // Add delete functionality here
-                    }}
+                    onClick={() => 
+                      navigate(`/admin/delete/msmphillpassout/${passout._id}`)}
                     className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
                   >
                     Delete
@@ -175,24 +174,25 @@ const MPhilPassout = () => {
           )}
         </div>
 
-        {/* Pagination Controls */}
-        <div className="flex justify-center mt-6">
+        
+      </div>
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-6">
           <button
             onClick={() => handlePagination(currentPage - 1)}
             disabled={currentPage === 1}
-            className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 mr-2"
+            className="px-4 py-2 bg-gradient-to-r from-orange-600 to-purple-700 shadow-2xl  hover:from-purple-900 hover:to-orange-700 text-white rounded-lg hover:bg-purple-700 cursor-pointer mr-2"
           >
             Previous
           </button>
           <button
             onClick={() => handlePagination(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
+            className="px-4 py-2 bg-gradient-to-r from-orange-600 to-purple-700 shadow-2xl  hover:from-purple-900 hover:to-orange-700 text-white rounded-lg cursor-pointer hover:bg-purple-700"
           >
             Next
           </button>
         </div>
-      </div>
     </div>
   );
 };

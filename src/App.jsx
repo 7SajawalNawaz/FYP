@@ -46,6 +46,15 @@ import AdminLayout from "./Admin/AdminLayout";
 import PHDPassouts from "./AdminPages/PHDPassouts";
 import MphillPassouts from "./AdminPages/MphillPassouts";
 import FacultyResumes from "./AdminPages/FacultyResumes";
+import AddFacultyResume from "./AdminPages/AddNew/AddFacultyResume";
+import AddMphillPassout from "./AdminPages/AddNew/AddMphillPassout";
+import AddPHDPassout from "./AdminPages/AddNew/AddPHDPassout";
+import UpdateFR from "./AdminPages/Update/UpdateFR";
+import UpdatePHD from "./AdminPages/Update/UpdatePHD";
+import UpdateMS from "./AdminPages/Update/UpdateMS";
+import DeleteMS from "./AdminPages/Delete/DeleteMS";
+import DeletePHD from "./AdminPages/Delete/DeletePHD";
+import DeleteFR from "./AdminPages/Delete/DeleteFR";
 
 
 const App = () => {
@@ -149,6 +158,20 @@ const App = () => {
         <Route path="/admin/phdpassouts" element={<PHDPassouts />}/> 
         <Route path="/admin/mphilpassouts" element={<MphillPassouts />}/>
         <Route path="/admin/facultyresumes" element={<FacultyResumes />}/>
+        <Route path="/admin/new/facultyresume" element={<AddFacultyResume />} />
+        <Route path="/admin/new/msmphillpassout" element={<AddMphillPassout />} />
+        <Route path="/admin/new/phdpassout" element={<AddPHDPassout/>} />
+
+      {/* update Route  */}
+
+      <Route path="/admin/update/facultyresume/:id" element={<UpdateFR />} />
+      <Route path="/admin/update/phdpassout/:id" element={<UpdatePHD />} />
+      <Route path="/admin/update/msmphillpassout/:id" element={<UpdateMS />} />
+
+      {/* Delete Route  */}
+      <Route path="/admin/delete/msmphillpassout/:id" element={<DeleteMS />} />
+      <Route path="/admin/delete/phdpassout/:id" element={<DeletePHD />} />
+      <Route path="/admin/delete/facultyresume/:id" element={<DeleteFR />} />
 
         </Route>
         
