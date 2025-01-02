@@ -83,7 +83,9 @@ const AdminFileManagement = () => {
       toast.success(response.data.message || "File deleted successfully.");
 
       // Reload files after deletion
-      setFiles((prevFiles) => prevFiles.filter((file) => file.key !== selectedFileKey));
+      setFiles((prevFiles) =>
+        prevFiles.filter((file) => file.key !== selectedFileKey)
+      );
       closeModal(); // Close the modal after deletion
     } catch (error) {
       toast.error("Failed to delete the file.");
@@ -113,18 +115,38 @@ const AdminFileManagement = () => {
     }
   };
 
-  return (
-    <div className="mr-6 mt-10 ">
-      <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
-        <div className="mb-6 flex justify-end">
-          {/* <button
-            onClick={() => navigate("/admin/upload")}
-            className="bg-gradient-to-r from-orange-400 to-purple-700 hover:from-purple-900 hover:to-orange-700 shadow-2xl text-white px-4 py-2 rounded-lg text-sm sm:text-base"
-          >
-            Upload New File
-          </button> */}
-        </div>
+  // Verify the file
+  const handleVerifyAction = async (fileKey) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("loginData"))?.token;
+      if (!token) {
+        toast.error("You are not authenticated. Please log in.");
+        navigate("/login");
+        return;
+      }
 
+      const response = await axios.put(
+        "/file/verify",
+        { key: fileKey },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      toast.success(response.data.message || "File verified successfully.");
+
+      // Update the files state
+      setFiles((prevFiles) =>
+        prevFiles.map((file) =>
+          file.key === fileKey ? { ...file, status: "verified" } : file
+        )
+      );
+    } catch (error) {
+      toast.error("Failed to verify the file.");
+    }
+  };
+
+  return (
+    <div className="mr-6 mt-10">
+      <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
         <h1 className="text-2xl text-white sm:text-3xl font-bold text-purple-950 mb-8 text-center">
           File Management
         </h1>
@@ -163,25 +185,52 @@ const AdminFileManagement = () => {
                       <div className="text-base font-medium text-black">MIME Type: </div>
                       {file.mimetype || "N/A"}
                     </div>
+                    <div className="text-sm text-gray-500">
+                      <div className="text-base font-medium text-black">Status: </div>
+                      <span
+                        className={`font-bold ${
+                          file.status === "verified"
+                            ? "text-green-600"
+                            : "text-red-600"
+                        }`}
+                      >
+                        {file.status}
+                      </span>
+                    </div>
                   </div>
 
                   <div className="flex justify-between items-center">
-                    <p className="text-xs text-gray-400">{new Date(file.createdAt).toLocaleString()}</p>
-                    <p className="text-xs text-gray-400">{new Date(file.updatedAt).toLocaleString()}</p>
+                    <p className="text-xs text-gray-400">
+                      {new Date(file.createdAt).toLocaleString()}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {new Date(file.updatedAt).toLocaleString()}
+                    </p>
                   </div>
 
                   <div className="flex justify-end space-x-2 mt-4">
                     <button
                       onClick={() => handleViewAction(file.key)} // View file action
-                      className="px-4 py-2 text-white bg-purple-500 rounded-lg hover:bg-purple-700"
+                      className="px-2 py-2 text-white bg-purple-500 rounded-lg hover:bg-purple-700"
                     >
                       View
                     </button>
                     <button
                       onClick={() => openModal(file.key)} // Open the modal on click
-                      className="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
+                      className="px-2 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
                     >
                       Delete
+                    </button>
+                    <button
+                      onClick={() => handleVerifyAction(file.key)} // Verify file action
+                      disabled={file.status === "verified"}
+                      className={`px-2 py-2 text-white ${
+                        file.status === "verified"
+                          ? "bg-gray-400"
+                          : "bg-green-500 hover:bg-green-700"
+                      } rounded-lg`}
+                    >
+                      {file.status === "verified" ? "Verified" : "Verify"}
                     </button>
                   </div>
                 </div>

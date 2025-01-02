@@ -1,9 +1,8 @@
-// src/components/FileUpload.jsx
-
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../../utilis/baseUrl"; // Ensure this axios instance is correctly configured
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { Link } from "react-router-dom"; // Import Link to navigate to the PendingApproval page
 
 const initialFileData = {
   file: null,
@@ -95,7 +94,7 @@ const FileUpload = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-8 mr-6 mt-10 rounded-xl">
-      <div className="flex flex-col bg-purple-100 items-center justify-center  py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[680px] rounded-lg shadow-md">
+      <div className="flex flex-col bg-purple-100 items-center justify-center py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[680px] rounded-lg shadow-md">
         <h1 className="text-2xl md:text-4xl font-bold text-purple-900 py-2">
           Research File Upload
         </h1>
@@ -121,6 +120,16 @@ const FileUpload = () => {
             />
           </div>
         </form>
+
+        {/* Link to check status */}
+        <div className="mt-4 text-center">
+          <p className="text-lg text-gray-700">
+            If you have already submitted the file,{" "}
+            <Link to="/pending-approval" className="text-blue-500 hover:underline">
+              please check the status.
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
