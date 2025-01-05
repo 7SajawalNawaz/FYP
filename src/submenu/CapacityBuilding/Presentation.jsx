@@ -14,7 +14,7 @@ const Presentation = () => {
           <div className="flex flex-col md:flex-row justify-center items-center mb-12 gap-6">
             <div className="relative w-full md:w-1/2 lg:w-2/5 mb-4">
               <img
-                src="/Images/training1.jpg"
+                src="/Images/training3.jpg"
                 alt="Training Image"
                 className="rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-125 hover:opacity-100 opacity-70" // Changed opacity styles
               />

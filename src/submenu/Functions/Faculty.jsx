@@ -1,101 +1,84 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
+// Faculty Members Data
 const facultyMembers = [
-  { 
-    id: 1, 
-    name: 'Dr Muhammad Naeem', 
-    position: 'Professor of Computer Science', 
-    description: 'Dr. Muhammad Naeem has been a faculty member for over 15 years. He specializes in AI and has published over 50 research papers in top-tier journals. His recent research focuses on developing algorithms for deep learning models and their application in healthcare. He is also a keynote speaker at various international conferences.', 
-    images: [
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150'
-    ]
+  {
+    id: 1,
+    name: "Dr. Sarah Khan",
+    position: "Professor of Data Science",
+    description:
+      "Dr. Sarah Khan has over 20 years of experience in academia and industry. Her research focuses on big data analytics and predictive modeling. She has published 60+ research papers and authored two books on data-driven decision-making.",
   },
-  { 
-    id: 2, 
-    name: 'Dr Ahmed Khan', 
-    position: 'Assistant Professor of Mechanical Engineering', 
-    description: 'Dr. Ahmed Khan has been recognized for his groundbreaking research in thermodynamics and has multiple patents related to renewable energy systems. He has been instrumental in mentoring graduate students and has received several teaching awards for his work.', 
-    images: [
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150'
-    ]
+  {
+    id: 2,
+    name: "Dr. Umar Farooq",
+    position: "Associate Professor of Physics",
+    description:
+      "Dr. Umar Farooq specializes in quantum mechanics and renewable energy technologies. He is known for his innovative teaching methods and collaborative research projects with international institutions.",
   },
-  { 
-    id: 3, 
-    name: 'Dr Asim Shehzad', 
-    position: 'Lecturer in Business Administration', 
-    description: 'Dr. Asim Shehzad focuses on leadership development, business strategy, and organizational behavior. He is known for his engaging lectures and has worked as a consultant with several multinational companies to develop strategic management frameworks.', 
-    images: [
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150', 
-      'https://via.placeholder.com/150'
-    ]
+  {
+    id: 3,
+    name: "Dr. Ayesha Malik",
+    position: "Lecturer in Economics",
+    description:
+      "Dr. Ayesha Malik has a passion for teaching microeconomics and international trade. She has been part of several policy-making workshops and her research focuses on global trade trends and market dynamics.",
   },
 ];
 
-// Animation Variants for Framer Motion
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+// Animation Variants
+const heroVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
 };
 
-const headingVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } },
 };
 
 const Faculty = () => {
   return (
-    <div className="pt-10 rounded-xl min-h-screen p-4 sm:p-8 lg:p-12 bg-gradient-to-r from-purple-100 to-purple-300">
-      <div className="max-w-5xl mx-auto">
-        <motion.h1 
-          className="text-2xl sm:text-3xl font-bold text-center text-purple-900 mb-6" 
-          variants={headingVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          Faculty Training
-        </motion.h1>
-        
-        <div className="space-y-8">
+    <>
+      {/* Hero Section */}
+      <motion.div
+        className="relative min-h-[400px] flex items-center justify-center bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://source.unsplash.com/1200x600/?university,classroom')",
+        }}
+        initial="hidden"
+        animate="visible"
+        variants={heroVariants}
+      >
+        <div className=" rounded-2xl absolute mr-6 mt-8 inset-0 bg-gradient-to-b from-purple-900 to-transparent opacity-80"></div>
+        <h1 className="relative z-10 text-4xl sm:text-5xl font-bold text-white text-center">
+          Meet Our Esteemed Faculty
+        </h1>
+      </motion.div>
+
+      {/* Faculty Section */}
+      <div className="py-12 px-6 bg-purple-50">
+        <div className="max-w-5xl mx-auto space-y-8">
           {facultyMembers.map((faculty) => (
-            <motion.div 
-              key={faculty.id} 
-              className="bg-white p-6 rounded-lg shadow-md border border-purple-200 space-y-4"
+            <motion.div
+              key={faculty.id}
+              className="bg-white p-6 rounded-lg shadow-lg border border-purple-200"
               variants={cardVariants}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Faculty Info */}
-                <div className="md:col-span-2">
-                  <h2 className="text-xl font-semibold text-purple-800">{faculty.name}</h2>
-                  <p className="text-md text-purple-600">{faculty.position}</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    {faculty.description}
-                  </p>
-                </div>
-                
-                {/* Faculty Images */}
-                <div className="grid grid-cols-3 gap-2">
-                  {faculty.images.map((image, index) => (
-                    <img 
-                      key={index} 
-                      src={image} 
-                      alt={`Faculty ${faculty.name} ${index + 1}`} 
-                      className="w-full h-auto object-cover rounded-lg shadow-sm"
-                    />
-                  ))}
-                </div>
-              </div>
+              <h2 className="text-2xl font-semibold text-purple-800">
+                {faculty.name}
+              </h2>
+              <p className="text-md text-purple-600">{faculty.position}</p>
+              <p className="text-sm text-gray-600 mt-2">
+                {faculty.description}
+              </p>
             </motion.div>
           ))}
         </div>
-
         <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
@@ -121,7 +104,10 @@ const Faculty = () => {
       </div>
     </footer>
       </div>
-    </div>
+
+      
+
+    </>
   );
 };
 

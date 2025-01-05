@@ -11,7 +11,7 @@ const faculties = [
       "Pharmacy D",
       "Biochemistry",
     ],
-    image: "https://via.placeholder.com/150", // Replace with actual image URL
+    image: "/public/Images/health.jpg", // Replace with actual image URL
   },
   {
     name: "Faculty of Science",
@@ -23,12 +23,12 @@ const faculties = [
       "Earth and Environmental Science",
       "Zoology",
     ],
-    image: "https://via.placeholder.com/150", // Replace with actual image URL
+    image: "/public/Images/sci.jpg", // Replace with actual image URL
   },
   {
     name: "Faculty of Engineering",
     departments: ["Materials, Minerals, and Mining", "Engineering"],
-    image: "https://via.placeholder.com/150", // Replace with actual image URL
+    image: "/public/Images/eng.jpg", // Replace with actual image URL
   },
   {
     name: "Faculty of Humanities and Social Sciences",
@@ -39,7 +39,7 @@ const faculties = [
       "Management Sciences",
       "Psychology",
     ],
-    image: "https://via.placeholder.com/150", // Replace with actual image URL
+    image: "/public/Images/hum.jpg", // Replace with actual image URL
   },
 ];
 
