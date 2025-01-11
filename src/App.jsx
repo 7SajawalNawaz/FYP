@@ -61,6 +61,8 @@ import PendingApproval from "./pages/PendingApproval";
 import ResearchData from "./AdminPages/ResearchData";
 import DeleteResearch from "./AdminPages/Delete/DeleteResearch";
 import ConfirmDeleteModal from "./AdminPages/Delete/ConfirmDelete";
+import ForgotPassword from "./pages/ForgotPassword";
+import RecoverPassword from "./pages/RecoverPassword";
 
 const App = () => {
   return (
@@ -71,6 +73,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/recover-password" element={<RecoverPassword />} />
 
           <Route element={<RootLayout />}>
             <Route path="/home" element={<Home />} />

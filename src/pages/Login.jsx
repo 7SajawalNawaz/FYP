@@ -300,6 +300,12 @@ const Login = () => {
               )}
             </div>
 
+            <div className="text-sm py-2">
+            <NavLink className="text-x text-purple-600" to="/forgot-password">
+                  Forgot your password
+                </NavLink>
+            </div>
+
             <div>
               <p className="text-sm text-slate-600">
                 If you doesn't have an account ?{" "}
@@ -308,6 +314,7 @@ const Login = () => {
                 </NavLink>
               </p>
             </div>
+            
 
             {/* login Button */}
             <div className="py-4">

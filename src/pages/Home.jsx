@@ -335,14 +335,14 @@ const Home = () => {
           {/* Vice Chancellor Message */}
 
           <motion.div className="mt-10 bg-white shadow-lg rounded-lg p-5 hover:shadow-2xl transition-shadow duration-300">
-          <h2 className="flex items-center justify-center text-xl md:text-2xl lg:text-3xl font-semibold text-purple-900 mb-8 text-center">
-    <img
-      src="/Images/aust.png" // Replace with actual logo path
-      alt="University Logo"
-      className="w-16 h-16 sm:h-20 sm:w-20 sm:mr-4 mr-1" // Adjust size and margin as needed
-    />
-    Vice Chancellor Abbottabad, UST
-  </h2>
+            <h2 className="flex items-center justify-center text-xl md:text-2xl lg:text-3xl font-semibold text-purple-900 mb-8 text-center">
+              <img
+                src="/Images/aust.png" // Replace with actual logo path
+                alt="University Logo"
+                className="w-16 h-16 sm:h-20 sm:w-20 sm:mr-4 mr-1" // Adjust size and margin as needed
+              />
+              Vice Chancellor Abbottabad, UST
+            </h2>
             <motion.div
               className="flex flex-col items-center p-4 rounded-lg bg-gradient-to-r from-purple-900 to-purple-700 text-white hover:scale-110 transition-transform duration-300 ease-out space-y-4"
               whileHover={{ scale: 1.08 }}
@@ -357,7 +357,7 @@ const Home = () => {
                   Prof Dr Malik Mujaddad Ur Rehman
                 </h3>
                 <p className="text-xl font-medium">
-                  Vice Chancellor Abbottabad , UST Message 
+                  Vice Chancellor Abbottabad , UST Message
                 </p>
                 <p className="text-xs sm:text-sm mt-2">
                   “As Vice Chancellor, my foremost priority is to continually
@@ -385,14 +385,14 @@ const Home = () => {
 
           {/* Member of QEC Section */}
           <motion.div className="mt-10 bg-white shadow-lg rounded-lg p-5 hover:shadow-2xl transition-shadow duration-300">
-          <h2 className="flex items-center justify-center text-2xl md:text-2xl lg:text-3xl font-semibold text-purple-900 mb-8 text-center">
-    <img
-      src="/Images/qec.jpg" // Replace with actual logo path
-      alt="QEC Logo"
-      className="w-20 h-20 mr-4" // Adjust size and margin as needed
-    />
-    QEC Faculty
-  </h2>
+            <h2 className="flex items-center justify-center text-2xl md:text-2xl lg:text-3xl font-semibold text-purple-900 mb-8 text-center">
+              <img
+                src="/Images/qec.jpg" // Replace with actual logo path
+                alt="QEC Logo"
+                className="w-20 h-20 mr-4" // Adjust size and margin as needed
+              />
+              QEC Faculty
+            </h2>
             <motion.div
               className="flex flex-col sm:flex-row items-center p-4 rounded-lg bg-gradient-to-r from-purple-900 to-purple-700 text-white hover:scale-105 transition-transform duration-300 ease-out space-y-4 sm:space-y-0 sm:space-x-6"
               whileHover={{ scale: 1.05 }}
@@ -408,13 +408,22 @@ const Home = () => {
                   Director Quality Enhancment Abbottabad , UST
                 </p>
                 <p className="text-xs sm:text-sm mt-2">
-                  “At the Quality Enhancement Cell, our commitment is to uphold
-                  and elevate the standards of academic and administrative
-                  excellence. Together, we strive to foster an environment of
-                  continuous improvement, ensuring that every student and
-                  faculty member can reach their full potential. Quality
-                  assurance is not just a goal—it’s our daily practice and
-                  promise to the future of education at Abbottabad , UST.”
+                  “Education drives personal growth, societal transformation,
+                  and global progress. At the Quality Assurance and Enhancement
+                  , we prioritize ensuring high standards of education to shape
+                  capable, ethical, and innovative individuals who can lead the
+                  future. As Nelson Mandela stated, “Education is the most
+                  powerful weapon which you can use to change the world.”
+                  Likewise, William Ruto warns, “If you want to destroy a
+                  nation, lower the quality of education by allowing cheating.”
+                  These insights remind us that quality and integrity are the
+                  cornerstones of impactful education. Our mission is to foster
+                  a culture of excellence by aligning with global standards,
+                  promoting innovation, and instilling values that empower
+                  students to excel and make meaningful contributions. Together,
+                  we can uphold the vision of quality education and build a
+                  brighter future. Dr Saifullah khan Director, Directorate of
+                  Quality Enhancement  Abbottabad UST”
                 </p>
               </div>
             </motion.div>

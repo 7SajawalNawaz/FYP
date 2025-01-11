@@ -10,7 +10,22 @@ const qecMembers = [
     id: 1, 
     name: 'Dr Saifullah Khan', 
     position: 'Director, Quality Enhancement Cell (QEC)', 
-    description: 'Dr. Saifullah Khan leads the QEC with a vision to uphold and advance the standards of academic and administrative excellence at Abbottabad UST. His commitment lies in fostering a culture of continuous improvement, ensuring that students and faculty thrive in an environment dedicated to quality education and innovation.'
+    description: `Education drives personal growth, societal transformation,
+    and global progress. At the Quality Assurance and Enhancement
+    , we prioritize ensuring high standards of education to shape
+    capable, ethical, and innovative individuals who can lead the
+    future. As Nelson Mandela stated, “Education is the most
+    powerful weapon which you can use to change the world.”
+    Likewise, William Ruto warns, “If you want to destroy a
+    nation, lower the quality of education by allowing cheating.”
+    These insights remind us that quality and integrity are the
+    cornerstones of impactful education. Our mission is to foster
+    a culture of excellence by aligning with global standards,
+    promoting innovation, and instilling values that empower
+    students to excel and make meaningful contributions. Together,
+    we can uphold the vision of quality education and build a
+    brighter future. Dr Saifullah khan Director, Directorate of
+    Quality Enhancement  Abbottabad UST`
   },
   { 
     id: 2, 
