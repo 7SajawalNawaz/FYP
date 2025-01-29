@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import axios from "../utilis/baseUrl";
 import moment from "moment";
 import { debounce } from "lodash";
+import Logout from "../pages/Logout";
 
 const MPhilPassout = () => {
   const [loading, setLoading] = useState(false);
@@ -90,7 +91,11 @@ const MPhilPassout = () => {
   }
 
   return (
-    <div className="mr-6">
+    <>
+    <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        <Logout />
+      </nav>
+    <div className="mr-6 py-2">
       <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
         <div className="mb-6 flex justify-end">
           <button
@@ -194,6 +199,7 @@ const MPhilPassout = () => {
           </button>
         </div>
     </div>
+    </>
   );
 };
 

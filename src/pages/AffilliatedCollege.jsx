@@ -56,7 +56,7 @@ const headingVariants = {
 const AffiliatedCollege = () => {
   return (
     <>
-    <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-4 sm:p-8 lg:p-12 min-h-screen">
+    <div className="bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl mr-6 p-4 sm:p-8 lg:p-12 min-h-screen">
       <div className="bg-white shadow-md rounded-lg p-5 sm:p-8 lg:p-12 max-w-5xl mx-auto">
         <motion.h1 
           className="text-2xl sm:text-3xl font-bold text-purple-900 mb-6 text-center" 
@@ -73,7 +73,7 @@ const AffiliatedCollege = () => {
         <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Abbottabad University. All rights reserved.
+        {new Date().getFullYear()} Abbottabad University of Science and Technology
         </p>
         <ul className="flex justify-center space-x-4 mt-2">
           <li>

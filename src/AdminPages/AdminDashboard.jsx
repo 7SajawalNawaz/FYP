@@ -1,9 +1,14 @@
 import React from "react";
 import { FacultyGraph, PhDGraph, MPhilGraph } from "./graphcomponents/GraphComponents";
 import { motion } from "framer-motion";
+import Logout from "../pages/Logout";
 
 const Dashboard = () => {
   return (
+    <>
+    <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        <Logout />
+      </nav>
     <div className="flex flex-col md:flex-row mt-10 mr-6 rounded-xl  bg-gradient-to-r from-purple-600 to-purple-800 min-h-screen">
       {/* Main Content */}
       <main className="w-full p-5 space-y-8">
@@ -85,6 +90,7 @@ const Dashboard = () => {
         </motion.div>
       </main>
     </div>
+    </>
   );
 };
 

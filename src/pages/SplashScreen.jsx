@@ -15,11 +15,12 @@ const SplashScreen = () => {
   }, [navigate]);
 
   return (
-    <motion.div
-      className="flex justify-center items-center h-screen"
-      initial={{ backgroundColor: "#D1C4E9" }} // Initial background color (light purple)
-      animate={{ backgroundColor: "#AB8BFF" }} // Final background color (darker purple)
-      transition={{ duration: 3 }} // Duration for the background color change
+    <motion.div 
+      className="min-h-screen flex flex-col items-center justify-center p-6 "
+      initial={{ backgroundPosition: "0% 50%" }}
+      animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+      transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+      style={{ background: "linear-gradient(90deg, #6a11cb, #CBC3E3, #6a11cb)", backgroundSize: "200% 200%" }}
     >
       {/* Logo Animation */}
       <motion.img

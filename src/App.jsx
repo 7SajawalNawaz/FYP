@@ -63,6 +63,7 @@ import DeleteResearch from "./AdminPages/Delete/DeleteResearch";
 import ConfirmDeleteModal from "./AdminPages/Delete/ConfirmDelete";
 import ForgotPassword from "./pages/ForgotPassword";
 import RecoverPassword from "./pages/RecoverPassword";
+import AboutUs from "./submenu/Assesment/AboutUs";
 
 const App = () => {
   return (
@@ -71,7 +72,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<SplashScreen />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/recover-password" element={<RecoverPassword />} />
@@ -84,6 +84,7 @@ const App = () => {
               element={<AffilliatedCollege />}
             />
             <Route path="/mous" element={<MOUs />} />
+            
 
             {/*QEC Services */}
             <Route path="/qec-services/HEC-E-Portal" element={<HecPortal />} />
@@ -154,8 +155,9 @@ const App = () => {
             <Route path="/assessments/faculty" element={<Faculty4 />} />
             <Route
               path="/assessments/assessmentteam"
-              element={<AssesmentTeam />}
-            />
+              element={<AssesmentTeam />} />
+            <Route path="/assessments/aboutus" element={<AboutUs />} />
+           
 
             {/* Functions */}
             <Route path="/functions/faculty-training" element={<Faculty />} />
@@ -174,6 +176,7 @@ const App = () => {
             <Route element={<AdminRoute />}>
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/phdpassouts" element={<PHDPassouts />} />
+              <Route path="/signup" element={<Signup />} />
               <Route path="/admin/mphilpassouts" element={<MphillPassouts />} />
               <Route
                 path="/admin/facultyresumes"

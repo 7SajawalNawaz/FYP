@@ -31,11 +31,13 @@ const newsData = [
 
 function NewsandEvents() {
   return (
-    <div className="min-h-screen py-20 mr-6  rounded-xl">
+    <>
+    <div className="bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl mr-6 mt-10 sm:p-8 lg:p-12 min-h-screen">
+    <div className="min-h-screen py-10 mr-6  rounded-xl">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Heading */}
         <motion.h1
-          className="text-3xl md:text-5xl font-extrabold text-purple-900 text-center mb-12"
+          className="text-3xl md:text-5xl font-extrabold text-white text-center mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -81,12 +83,13 @@ function NewsandEvents() {
           </a>
         </div>
       </div>
-
+      </div>
+      </div>
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-4 mt-12 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Abbottabad University. All rights reserved.
+        {new Date().getFullYear()} Abbottabad University of Science and Technology
         </p>
         <ul className="flex justify-center space-x-4 mt-2">
           <li>
@@ -107,7 +110,7 @@ function NewsandEvents() {
         </ul>
       </div>
     </footer>
-    </div>
+    </>
   );
 }
 

@@ -65,19 +65,19 @@ const DownloadForms = () => {
 
   return (
     <div className="mr-4">
-      <div className="container mx-auto py-8 px-4 bg-gradient-to-r from-purple-100 to-purple-200 min-h-screen rounded-lg pt-20">
-        <h1 className="text-4xl font-bold text-purple-800 mb-6 text-center">
+      <div className="container mx-auto py-8 px-4 bg-gradient-to-r from-purple-500 to-purple-900 min-h-screen rounded-2xl mt-10 mr-6 pt-20">
+        <h1 className="text-4xl font-bold text-white mb-6 text-center">
           MS/MPhil & PhD Programs Review
         </h1>
 
-        <p className="mb-6 text-black text-base text-center max-w-3xl mx-auto">
+        <p className="mb-6 text-white text-base text-center max-w-3xl mx-auto">
           The quality of Masters and PhD programs is peer-reviewed according to
           HEC criteria. Below, you can find downloadable forms for the program
           review.
         </p>
 
         {/* First List of Forms */}
-        <h2 className="text-2xl font-semibold text-purple-800 mb-4 text-center">
+        <h2 className="text-2xl font-semibold text-white mb-4 text-center">
           Downloadable Forms
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
@@ -103,7 +103,7 @@ const DownloadForms = () => {
         </div>
 
         {/* Second List of Additional Forms */}
-        <h2 className="text-2xl font-semibold text-purple-800 mb-4 text-center">
+        <h2 className="text-2xl font-semibold text-white mb-4 text-center">
           Individual Forms in Document Format
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -132,7 +132,7 @@ const DownloadForms = () => {
       <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
         <div className="container mx-auto text-center">
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} Abbottabad University. All rights reserved.
+          {new Date().getFullYear()} Abbottabad University of Science and Technology
           </p>
           <ul className="flex justify-center space-x-4 mt-2">
             <li>

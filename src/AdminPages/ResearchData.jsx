@@ -1,19 +1,23 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "../utilis/baseUrl"; // Adjust the import according to your project structure
-import ConfirmDeleteModal from "./Delete/ConfirmDelete"; // Import the modal component
+import axios from "../utilis/baseUrl";
+import ConfirmDeleteModal from "./Delete/ConfirmDelete";
+import moment from "moment";
+import Logout from "../pages/Logout";
 
 const AdminFileManagement = () => {
+  // State Variables
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
-  const [selectedFileKey, setSelectedFileKey] = useState(null); // Store the file key to be deleted
-  const navigate = useNavigate();
-  const searchInputRef = useRef(null); // Create a ref for the input element
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFileKey, setSelectedFileKey] = useState(null);
 
-  // Fetch files from the server
+  const navigate = useNavigate();
+  const searchInputRef = useRef(null);
+
+  // Fetch Files
   useEffect(() => {
     const fetchFiles = async () => {
       setLoading(true);
@@ -27,44 +31,35 @@ const AdminFileManagement = () => {
 
         const response = await axios.get("/file/files", {
           headers: { Authorization: `Bearer ${token}` },
-          params: { q: searchQuery }, // Use the current search query
+          params: { q: searchQuery },
         });
 
         setFiles(response.data.data || []);
-        setLoading(false);
       } catch (error) {
-        setLoading(false);
         toast.error("Failed to fetch files.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchFiles();
-  }, [navigate, searchQuery]);
+  }, [searchQuery, navigate]);
 
-  // Handle search query change
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  // Handle Search
+  const handleSearchChange = (e) => setSearchQuery(e.target.value);
 
-  // Trigger search when button is clicked
-  const handleSearchClick = (event) => {
-    event.preventDefault();
-    setSearchQuery(searchQuery); // Ensure the query is set
-  };
-
-  // Open the confirmation modal
+  // Modal Functions
   const openModal = (fileKey) => {
     setSelectedFileKey(fileKey);
     setIsModalOpen(true);
   };
 
-  // Close the modal
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedFileKey(null);
   };
 
-  // Confirm the delete action
+  // File Actions
   const handleDeleteAction = async () => {
     try {
       const token = JSON.parse(localStorage.getItem("loginData"))?.token;
@@ -74,26 +69,20 @@ const AdminFileManagement = () => {
         return;
       }
 
-      // Send DELETE request to backend
-      const response = await axios.delete("/file/delete", {
+      await axios.delete("/file/delete", {
         headers: { Authorization: `Bearer ${token}` },
         params: { key: selectedFileKey },
       });
 
-      toast.success(response.data.message || "File deleted successfully.");
-
-      // Reload files after deletion
-      setFiles((prevFiles) =>
-        prevFiles.filter((file) => file.key !== selectedFileKey)
-      );
-      closeModal(); // Close the modal after deletion
+      toast.success("File deleted successfully.");
+      setFiles((prev) => prev.filter((file) => file.key !== selectedFileKey));
+      closeModal();
     } catch (error) {
       toast.error("Failed to delete the file.");
-      closeModal(); // Close the modal even on failure
+      closeModal();
     }
   };
 
-  // Fetch the signed URL for the file
   const handleViewAction = async (fileKey) => {
     try {
       const token = JSON.parse(localStorage.getItem("loginData"))?.token;
@@ -109,13 +98,12 @@ const AdminFileManagement = () => {
       });
 
       const { url } = response.data.data;
-      window.open(url, "_blank"); // Open the file in a new tab
+      window.open(url, "_blank");
     } catch (error) {
       toast.error("Failed to fetch the signed URL.");
     }
   };
 
-  // Verify the file
   const handleVerifyAction = async (fileKey) => {
     try {
       const token = JSON.parse(localStorage.getItem("loginData"))?.token;
@@ -125,17 +113,15 @@ const AdminFileManagement = () => {
         return;
       }
 
-      const response = await axios.put(
+      await axios.put(
         "/file/verify",
         { key: fileKey },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      toast.success(response.data.message || "File verified successfully.");
-
-      // Update the files state
-      setFiles((prevFiles) =>
-        prevFiles.map((file) =>
+      toast.success("File verified successfully.");
+      setFiles((prev) =>
+        prev.map((file) =>
           file.key === fileKey ? { ...file, status: "verified" } : file
         )
       );
@@ -144,29 +130,40 @@ const AdminFileManagement = () => {
     }
   };
 
+  // Format Dates
+  const formatDate = (dateString) => {
+    return moment(dateString).isValid()
+      ? moment(dateString).format("LLL")
+      : "N/A";
+  };
+
   return (
+    <>
+    <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        <Logout />
+      </nav>
+
     <div className="mr-6 mt-10">
       <div className="bg-gradient-to-r from-purple-600 to-purple-900 rounded-2xl mt-2 w-full max-w-screen-xl mx-auto py-10 px-5 sm:px-10">
-        <h1 className="text-2xl text-white sm:text-3xl font-bold text-purple-950 mb-8 text-center">
+        <h1 className="text-3xl font-bold text-white mb-8 text-center">
           File Management
         </h1>
 
-        <div className="mb-6 flex justify-center sm:justify-start w-full">
-          <div className="border border-purple-500 p-0 rounded-lg bg-purple-100">
-            <input
-              ref={searchInputRef} // Attach the ref to the input
-              type="text"
-              name="search"
-              placeholder="Search for a file"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="w-full sm:w-64 md:w-80 lg:w-96 px-4 py-2 border-none rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+        {/* Search Bar */}
+        <div className="mb-6 flex justify-center sm:justify-start">
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder="Search for a file"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="w-full sm:w-64 md:w-80 lg:w-96 px-4 py-2 border border-purple-500 rounded-lg bg-purple-100 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+          />
         </div>
 
+        {/* Loading State */}
         {loading ? (
-          <div>Loading...</div>
+          <div className="text-center text-white">Loading...</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {files.length > 0 ? (
@@ -175,60 +172,65 @@ const AdminFileManagement = () => {
                   key={file._id}
                   className="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 >
-                  <div className="mb-4">
-                    <h3 className="font-bold text-xs text-purple-700">{file.key}</h3>
-                    <div className="text-sm text-gray-500">
-                      <div className="text-base font-medium text-black">Size: </div>
-                      {file.size} KB
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <div className="text-base font-medium text-black">MIME Type: </div>
-                      {file.mimetype || "N/A"}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <div className="text-base font-medium text-black">Status: </div>
-                      <span
-                        className={`font-bold ${
-                          file.status === "verified"
-                            ? "text-green-600"
-                            : "text-red-600"
-                        }`}
+                  <h3 className="font-bold text-sm text-purple-700 py-2">{file.key}</h3>
+                  <p className="text-sm py-1 text-black">Size: {file.size} KB</p>
+                  <p className="text-sm py-1 text-black">
+                    Link:{" "}
+                    {file.link ? (
+                      <a
+                        href={file.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:underline text-xs"
                       >
-                        {file.status}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between items-center">
-                    <p className="text-xs text-gray-400">
-                      {new Date(file.createdAt).toLocaleString()}
-                    </p>
-                    <p className="text-xs text-gray-400">
-                      {new Date(file.updatedAt).toLocaleString()}
-                    </p>
-                  </div>
-
-                  <div className="flex justify-end space-x-2 mt-4">
+                        {file.link}
+                      </a>
+                    ) : (
+                      "N/A"
+                    )}
+                  </p>
+                  <p className="text-sm text-black">
+                    MIME Type: {file.mimetype || "N/A"}
+                  </p>
+                  <p className="text-sm">
+                    Status:{" "}
+                    <span
+                      className={`font-bold ${
+                        file.status === "verified"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {file.status}
+                    </span>
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    Created: {formatDate(file.createdAt)}
+                  </p>
+                  <p className="text-xs text-gray-400">
+                    Updated: {formatDate(file.updatedAt)}
+                  </p>
+                  <div className="flex space-x-2 mt-4">
                     <button
-                      onClick={() => handleViewAction(file.key)} // View file action
-                      className="px-2 py-2 text-white bg-purple-500 rounded-lg hover:bg-purple-700"
+                      onClick={() => handleViewAction(file.key)}
+                      className="px-2 py-1 bg-purple-500 text-white rounded-lg hover:bg-purple-700"
                     >
                       View
                     </button>
                     <button
-                      onClick={() => openModal(file.key)} // Open the modal on click
-                      className="px-2 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600"
+                      onClick={() => openModal(file.key)}
+                      className="px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
                     >
                       Delete
                     </button>
                     <button
-                      onClick={() => handleVerifyAction(file.key)} // Verify file action
+                      onClick={() => handleVerifyAction(file.key)}
                       disabled={file.status === "verified"}
-                      className={`px-2 py-2 text-white ${
+                      className={`px-2 py-1 rounded-lg text-white ${
                         file.status === "verified"
                           ? "bg-gray-400"
                           : "bg-green-500 hover:bg-green-700"
-                      } rounded-lg`}
+                      }`}
                     >
                       {file.status === "verified" ? "Verified" : "Verify"}
                     </button>
@@ -243,7 +245,7 @@ const AdminFileManagement = () => {
           </div>
         )}
 
-        {/* Modal */}
+        {/* Confirmation Modal */}
         <ConfirmDeleteModal
           isOpen={isModalOpen}
           onConfirm={handleDeleteAction}
@@ -251,6 +253,7 @@ const AdminFileManagement = () => {
         />
       </div>
     </div>
+    </>
   );
 };
 

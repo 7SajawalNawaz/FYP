@@ -101,8 +101,8 @@ const MOUs = () => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center min-h-screen pt-16 px-2 mr-4 text-center bg-purple-50">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-purple-900">MOU Notifications</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen pt-16  px-8 text-center p-4 rounded-2xl mr-6  bg-gradient-to-r from-purple-500 to-purple-900">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-white">MOU Notifications</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto">
         {notifications.map((notification) => (
           <motion.div
@@ -156,7 +156,7 @@ const MOUs = () => {
       <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Abbottabad University. All rights reserved.
+        {new Date().getFullYear()} Abbottabad University of Science and Technology
         </p>
         <ul className="flex justify-center space-x-4 mt-2">
           <li>

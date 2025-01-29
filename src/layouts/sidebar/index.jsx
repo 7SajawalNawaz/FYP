@@ -80,7 +80,7 @@ const Sidebar = () => {
     {
       name: "Assessments",
       icon: HiOutlineBookOpen,
-      menus: ["Departments", "Programs", "Faculty", "AssessmentTeam"],
+      menus: ["Departments", "Programs", "Faculty", "AssessmentTeam" , "AboutUs"],
     },
     { name: "Functions", icon: TbFunction, menus: ["Faculty-Training" , "News&Events"] },
     { name: "Downloads", icon: HiDownload, menus: ["Manual", "HEC-Rules" , "GEP-Policy"] },

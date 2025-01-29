@@ -65,7 +65,7 @@ const Signup = () => {
 
         setLoading(false);
 
-        Navigate("/login");
+        Navigate("/signup");
       } catch (error) {
         setLoading(false);
 
@@ -82,7 +82,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-8">
+    <div className="mt-10">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-8 mr-6 mt-6 rounded-2xl">
       <div className="flex flex-col bg-purple-100 items-center justify-center py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[400px] rounded-lg shadow-md">
         <h1 className="text-2xl md:text-4xl font-bold text-purple-900 py-2">
           Sign Up
@@ -168,6 +169,7 @@ const Signup = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

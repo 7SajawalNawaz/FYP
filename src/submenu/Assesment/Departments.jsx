@@ -257,7 +257,7 @@ const departmentsData = [
 const Departments = () => {
   return (
     <>
-    <div className="flex flex-col pt-14 mr-5 items-center justify-center bg-gradient-to-r from-purple-100 to-purple-200 min-h-screen p-8 rounded-2xl">
+    <div className="flex flex-col pt-14 items-center justify-center bg-gradient-to-r from-purple-500 to-purple-900 min-h-screen p-8 mr-6 mt-10 rounded-2xl">
       {departmentsData.map((department, index) => (
         <motion.div
           key={index}
@@ -316,7 +316,7 @@ const Departments = () => {
     <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-          &copy; {new Date().getFullYear()} Abbottabad University. All rights reserved.
+        {new Date().getFullYear()} Abbottabad University of Science and Technology
         </p>
         <ul className="flex justify-center space-x-4 mt-2">
           <li>

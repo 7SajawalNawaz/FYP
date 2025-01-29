@@ -16,6 +16,7 @@ import { GiArchiveResearch } from "react-icons/gi";
 import { FaUserGraduate } from "react-icons/fa";
 import { GiGraduateCap } from "react-icons/gi";
 import { FcSurvey } from "react-icons/fc";
+import { FaUser } from "react-icons/fa";
 import { MdMenu } from "react-icons/md";
 
 const Sidebar = () => {
@@ -132,7 +133,7 @@ const Sidebar = () => {
                 onClick={() => setOpen(false)}
               >
                 <FaUserGraduate  size={20} className="min-w-max" />
-                Mphill Passouts
+                Mphil Passouts
               </NavLink>
             </li>
 
@@ -177,6 +178,17 @@ const Sidebar = () => {
               >
                 <GiArchiveResearch  size={20} className="min-w-max" />
                 Research Data
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/signup"
+                className="link text-xs sm:text-sm"
+                onClick={() => setOpen(false)}
+              >
+                <FaUser   size={20} className="min-w-max" />
+                Create A New User
               </NavLink>
             </li>
 

@@ -308,10 +308,10 @@ const Login = () => {
 
             <div>
               <p className="text-sm text-slate-600">
-                If you doesn't have an account ?{" "}
-                <NavLink className="text-x text-purple-500" to="/signup">
+                Only admin can create new login !{" "}
+                {/* <NavLink className="text-x text-purple-500" to="/signup">
                   Sign Up
-                </NavLink>
+                </NavLink> */}
               </p>
             </div>
             

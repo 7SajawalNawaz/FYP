@@ -4,36 +4,45 @@ import axios from "../../utilis/baseUrl"; // Ensure this axios instance is corre
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import { Link } from "react-router-dom"; // Import Link to navigate to the PendingApproval page
 
-const initialFileData = {
+const initialFormData = {
   file: null,
+  link: "",
 };
 
-const initialFileErr = {
+const initialFormErr = {
   file: "",
+  link: "",
 };
 
-const FileUpload = () => {
-  const [fileData, setFileData] = useState(initialFileData);
-  const [fileErr, setFileErr] = useState(initialFileErr);
+const ResearchUpload = () => {
+  const [formData, setFormData] = useState(initialFormData);
+  const [formErr, setFormErr] = useState(initialFormErr);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate hook for redirection
 
   // Handle file input change
-  const handleChange = (e) => {
+  const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFileData({ file });
-      setFileErr({ file: "" }); // Clear error when file is selected
+      setFormData((prev) => ({ ...prev, file }));
+      setFormErr((prev) => ({ ...prev, file: "" })); // Clear error when file is selected
     }
+  };
+
+  // Handle link input change
+  const handleLinkChange = (e) => {
+    const link = e.target.value;
+    setFormData((prev) => ({ ...prev, link }));
+    setFormErr((prev) => ({ ...prev, link: "" })); // Clear error when link is entered
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if file is selected
-    if (!fileData.file) {
-      setFileErr({ file: "Please select a file" });
+    // Check if either file or link is provided
+    if (!formData.file && !formData.link) {
+      setFormErr({ file: "Please select a file or enter a link", link: "Please select a file or enter a link" });
       return;
     }
 
@@ -54,20 +63,25 @@ const FileUpload = () => {
         "Content-Type": "multipart/form-data", // Ensure correct content type
       };
 
-      // Create FormData instance and append the file with correct key name "image"
-      const formData = new FormData();
-      formData.append("image", fileData.file); // Update field name to "image" (matching backend)
+      // Create FormData instance and append the file and link
+      const formDataToSend = new FormData();
+      if (formData.file) {
+        formDataToSend.append("file", formData.file); // Update field name to "file" (matching backend)
+      }
+      if (formData.link) {
+        formDataToSend.append("link", formData.link);
+      }
 
       // Send the POST request with FormData
-      const response = await axios.post("/file/upload", formData, { headers });
+      const response = await axios.post("/file/upload", formDataToSend, { headers });
 
       toast.success(response.data.message, {
         position: "top-right",
         autoClose: 3000,
       });
 
-      setFileData(initialFileData); // Reset file data
-      setFileErr(initialFileErr); // Clear errors
+      setFormData(initialFormData); // Reset form data
+      setFormErr(initialFormErr); // Clear errors
       setLoading(false);
 
       // Redirect to the PendingApproval page after successful upload
@@ -105,10 +119,25 @@ const FileUpload = () => {
               className="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               type="file"
               name="file"
-              onChange={handleChange}
+              onChange={handleFileChange}
             />
-            {fileErr.file && (
-              <p className="text-xs text-red-600">{fileErr.file}</p>
+            {formErr.file && (
+              <p className="text-xs text-red-600">{formErr.file}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col py-1">
+            <label className="text-purple-950 font-medium mb-1">Enter Research Link</label>
+            <input
+              className="p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              type="text"
+              name="link"
+              placeholder="Enter your research link"
+              value={formData.link}
+              onChange={handleLinkChange}
+            />
+            {formErr.link && (
+              <p className="text-xs text-red-600">{formErr.link}</p>
             )}
           </div>
 
@@ -116,7 +145,7 @@ const FileUpload = () => {
             <input
               className="w-full p-2 border border-l-fuchsia-800 rounded-md cursor-pointer text-white font-bold bg-purple-900 hover:bg-slate-800 transition-colors"
               type="submit"
-              value={`${loading ? "Uploading..." : "Upload File"}`}
+              value={`${loading ? "Uploading..." : "Upload"}`}
             />
           </div>
         </form>
@@ -135,4 +164,4 @@ const FileUpload = () => {
   );
 };
 
-export default FileUpload;
+export default ResearchUpload;
