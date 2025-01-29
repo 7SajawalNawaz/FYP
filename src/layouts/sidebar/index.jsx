@@ -75,7 +75,7 @@ const Sidebar = () => {
     {
       name: "CapacityBuilding",
       icon: RiBuilding3Line,
-      menus: ["Service", "Workshop", "Training", "Presentations"],
+      menus: ["Service", "Workshop", "Training", "Presentations" , "Guide"],
     },
     {
       name: "Assessments",

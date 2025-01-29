@@ -5,9 +5,11 @@ import axios from "../utilis/baseUrl";
 import moment from "moment";
 import { debounce } from "lodash";
 import Logout from "../pages/Logout";
+import { FaUserCircle } from "react-icons/fa"; // Profile icon
 
 const FacultyResume = () => {
   const [loading, setLoading] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [facultyResumes, setFacultyResumes] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,6 +19,9 @@ const FacultyResume = () => {
   const navigate = useNavigate();
   const searchInputRef = useRef(null); // Create a ref for the input element
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+  };
   // Debounced search function
   const debouncedSearch = debounce((query) => {
     setSearchQuery(query);
@@ -93,8 +98,30 @@ const FacultyResume = () => {
 
   return (
     <>
-    <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
-        <Logout />
+    <nav className="bg-gradient-to-r from-purple-500 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        {/* Profile Button */}
+        <div className="relative">
+          <button
+            onClick={toggleMenu}
+            className="flex items-center text-white"
+          >
+            <FaUserCircle size={40} />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+              <ul>
+                
+                <li
+                  className="px-4 py-2 cursor-pointer rounded-lg hover:bg-purple-300"
+                >
+                  <Logout />
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
 
     <div className="mr-6 py-2">

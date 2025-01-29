@@ -5,10 +5,13 @@ import axios from "../utilis/baseUrl";
 import ConfirmDeleteModal from "./Delete/ConfirmDelete";
 import moment from "moment";
 import Logout from "../pages/Logout";
+import { FaUserCircle } from "react-icons/fa"; // Profile icon
 
 const AdminFileManagement = () => {
   // State Variables
   const [files, setFiles] = useState([]);
+  
+ const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +19,11 @@ const AdminFileManagement = () => {
 
   const navigate = useNavigate();
   const searchInputRef = useRef(null);
+
+  
+const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+  };
 
   // Fetch Files
   useEffect(() => {
@@ -139,8 +147,31 @@ const AdminFileManagement = () => {
 
   return (
     <>
-    <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
-        <Logout />
+    
+<nav className="bg-gradient-to-r from-purple-500 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        {/* Profile Button */}
+        <div className="relative">
+          <button
+            onClick={toggleMenu}
+            className="flex items-center text-white"
+          >
+            <FaUserCircle size={40} />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+              <ul>
+                
+                <li
+                  className="px-4 py-2 cursor-pointer rounded-lg hover:bg-purple-300"
+                >
+                  <Logout />
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
 
     <div className="mr-6 mt-10">

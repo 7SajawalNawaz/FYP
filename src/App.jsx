@@ -64,6 +64,7 @@ import ConfirmDeleteModal from "./AdminPages/Delete/ConfirmDelete";
 import ForgotPassword from "./pages/ForgotPassword";
 import RecoverPassword from "./pages/RecoverPassword";
 import AboutUs from "./submenu/Assesment/AboutUs";
+import Guide from "./submenu/CapacityBuilding/Guide";
 
 const App = () => {
   return (
@@ -148,6 +149,7 @@ const App = () => {
               path="/capacitybuilding/presentations"
               element={<Presentation />}
             />
+            <Route path="/capacitybuilding/guide" element={<Guide />} />
 
             {/* Assessments */}
             <Route path="/assessments/departments" element={<Departments />} />

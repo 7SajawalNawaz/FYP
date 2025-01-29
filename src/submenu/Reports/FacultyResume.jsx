@@ -4,6 +4,7 @@ import axios from "../../utilis/baseUrl";
 import ResumeValidator from "../../Validators/ResumeValidator";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logout from "../../pages/Logout";
+import { FaUserCircle } from "react-icons/fa"; // Profile icon
 
 const initialFormData = {
   name: "",
@@ -37,9 +38,16 @@ const intialFormErr = {
 
 const FacultyResume = () => {
   const [formData, setFormdata] = useState(initialFormData);
+
+ const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const [formErr, setFormErr] = useState(intialFormErr);
   const [loading, setLoading] = useState(false);
   const Navigate = useNavigate();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
+  };
 
   const handleChange = (e) => {
     setFormdata((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -135,9 +143,32 @@ const FacultyResume = () => {
   return (
     <>
 
-<nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
-  <Logout />
-</nav>
+
+<nav className="bg-gradient-to-r from-purple-500 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        {/* Profile Button */}
+        <div className="relative">
+          <button
+            onClick={toggleMenu}
+            className="flex items-center text-white"
+          >
+            <FaUserCircle size={40} />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+              <ul>
+                
+                <li
+                  className="px-4 py-2 cursor-pointer rounded-lg hover:bg-purple-300"
+                >
+                  <Logout />
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </nav>
 
 
 

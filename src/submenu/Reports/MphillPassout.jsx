@@ -4,6 +4,7 @@ import axios from "../../utilis/baseUrl";
 import PHDValidator from "../../Validators/PHDValidator";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logout from "../../pages/Logout";
+import { FaUserCircle } from "react-icons/fa"; // Profile icon
 
 const initialFormData = {
   name: "",
@@ -25,12 +26,19 @@ const intialFormErr = {
 
 const MphillPassout = () => {
   const [formData, setFormdata] = useState(initialFormData);
+ 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+ 
   const [formErr, setFormErr] = useState(intialFormErr);
   const [loading, setLoading] = useState(false);
   const Navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormdata((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
   };
 
   const handleSubmit = async (e) => {
@@ -113,8 +121,31 @@ const MphillPassout = () => {
 
   return (
     <>
-      <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 shadow-lg flex justify-end mt-10 mr-6 rounded-xl">
-        <Logout />
+     
+<nav className="bg-gradient-to-r from-purple-500 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
+        {/* Profile Button */}
+        <div className="relative">
+          <button
+            onClick={toggleMenu}
+            className="flex items-center text-white"
+          >
+            <FaUserCircle size={40} />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
+              <ul>
+                
+                <li
+                  className="px-4 py-2 cursor-pointer rounded-lg hover:bg-purple-300"
+                >
+                  <Logout />
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </nav>
 
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-8 mr-6 mt-6 rounded-xl">

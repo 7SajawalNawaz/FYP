@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "../../utilis/baseUrl";
 import { useNavigate, useParams } from "react-router-dom";
-import Logout from "../../pages/Logout";
+
 
 const initialFormData = {
   name: "",
@@ -88,9 +88,7 @@ const MsMphilPassoutUpdate = () => {
 
   return (
     <>
-      <nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
-        <Logout />
-      </nav>
+      
 
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-8 mr-6 mt-6 rounded-xl">
         <div className="flex flex-col bg-purple-100 items-center justify-center mt-8 py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[680px] rounded-lg shadow-md">

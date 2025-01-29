@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import axios from "../../utilis/baseUrl";
 import ResumeValidator from "../../Validators/ResumeValidator";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logout from "../../pages/Logout";
+
 
 const initialFormData = {
   name: "",
@@ -135,9 +135,7 @@ const FacultyResume = () => {
   return (
     <>
 
-<nav className="bg-gradient-to-r from-purple-800 to-purple-900 px-6 py-4 mt-10 shadow-lg flex justify-end mr-6 rounded-xl">
-  <Logout />
-</nav>
+
 
 
 
