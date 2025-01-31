@@ -39,7 +39,7 @@ const Card = ({ title, description, link }) => (
 export default function HECPoliciesPage() {
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-b from-purple-700 to-purple-900 p-6 flex flex-col items-center mt-10 mr-6 rounded-2xl">
+      <div className="min-h-screen bg-gradient-to-b from-purple-600 to-purple-900 p-6 flex flex-col items-center mt-10 mr-6 rounded-2xl">
         <h1 className="text-3xl font-bold text-white mb-4">HEC Guidelines</h1>
         <p className="text-white mb-6 text-center max-w-2xl">
           These policies have been developed to facilitate faculty, students,
@@ -56,7 +56,7 @@ export default function HECPoliciesPage() {
       <footer className="bg-gray-800 text-white py-4 mt-4 mr-6 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
         <div className="container mx-auto text-center">
           <p className="text-sm">
-            {new Date().getFullYear()} Abbottabad University of Science and
+             Abbottabad University of Science and
             Technology
           </p>
           <ul className="flex justify-center space-x-4 mt-2">

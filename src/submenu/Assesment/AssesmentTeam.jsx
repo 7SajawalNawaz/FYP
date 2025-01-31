@@ -55,7 +55,14 @@ const containerVariants = {
 
 const AssesmentTeam = () => {
   return (
-    <div className="min-h-screen pt-10 mr-2 flex flex-col justify-between p-4 sm:p-8 lg:p-12 bg-gradient-to-r from-purple-100 to-purple-300">
+    <div>
+    <motion.div 
+            className="min-h-screen flex flex-col items-center justify-center p-6 mr-6 rounded-2xl"
+            initial={{ backgroundPosition: "0% 50%" }}
+            animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+            transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+            style={{ background: "linear-gradient(90deg, #6a11cb, #CBC3E3, #6a11cb)", backgroundSize: "200% 200%" }}
+          >
       <motion.div 
         className="bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto flex-1"
         variants={containerVariants}
@@ -95,30 +102,34 @@ const AssesmentTeam = () => {
       </motion.div>
 
       {/* Footer with a subtle line */}
-      <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
-        <div className="container mx-auto text-center">
-          <p className="text-sm">
-          {new Date().getFullYear()} Abbottabad University of Science and Technology
-          </p>
-          <ul className="flex justify-center space-x-4 mt-2">
-            <li>
-              <a href="/privacy-policy" className="text-white hover:underline">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="/terms-of-service" className="text-white hover:underline">
-                Terms of Service
-              </a>
-            </li>
-            <li>
-              <a href="/contact-us" className="text-white hover:underline">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      
+      </motion.div>
+      
+      <footer className="bg-gray-800 text-white py-4 mt-4 rounded-xl bg-gradient-to-r from-purple-500 to-purple-900 mr-6">
+      <div className="container mx-auto text-center">
+        <p className="text-sm">
+         Abbottabad University of Science and Technology
+        </p>
+        <ul className="flex justify-center space-x-4 mt-2">
+          <li>
+            <a href="/privacy-policy" className="text-white hover:underline">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="/terms-of-service" className="text-white hover:underline">
+              Terms of Service
+            </a>
+          </li>
+          <li>
+            <a href="/contact-us" className="text-white hover:underline">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    
     </div>
   );
 };

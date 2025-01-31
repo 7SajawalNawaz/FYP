@@ -55,11 +55,14 @@ const Faculty = () => {
 
   return (
     <>
-    <div className="flex flex-wrap gap-2 p-2 mr-4 pt-10 xl:ml-16 bg-gradient-to-r from-purple-50 to-purple-100 min-h-screen">
+    
+    <div className="flex flex-wrap gap-2   mr-4 rounded-2xl mt-10 px-4 py-2 sm:py-4 sm:px-20 bg-gradient-to-r from-purple-600 to-purple-900 min-h-screen">
+      
       {faculties.map((faculty, index) => (
+        <div className='justify-center items-center'>
         <motion.div
           key={index}
-          className="w-full md:w-1/4 lg:w-1/6 xl:w-96 p-4 bg-white shadow-lg rounded-lg border border-purple-300"
+          className="w-full md:w-1/4 lg:w-1/6 xl:w-96 p-4  bg-white shadow-lg rounded-lg border border-purple-300"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -96,14 +99,15 @@ const Faculty = () => {
             {showDepartments[index] ? 'Show Less' : 'Read More'}
           </button>
         </motion.div>
+        </div>
       ))}
       
     </div>
     
-    <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
+    <footer className="bg-gray-800 text-white py-4 mt-4 mr-6  rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
       <div className="container mx-auto text-center">
         <p className="text-sm">
-        {new Date().getFullYear()} Abbottabad University of Science and Technology
+        Abbottabad University of Science and Technology
         </p>
         <ul className="flex justify-center space-x-4 mt-2">
           <li>

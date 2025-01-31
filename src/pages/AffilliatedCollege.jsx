@@ -56,33 +56,44 @@ const headingVariants = {
 const AffiliatedCollege = () => {
   return (
     <>
-    <div className="bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl mr-6 p-4 sm:p-8 lg:p-12 min-h-screen">
-      <div className="bg-white shadow-md rounded-lg p-5 sm:p-8 lg:p-12 max-w-5xl mx-auto">
+    <div className="bg-gradient-to-r from-purple-500 to-purple-900 rounded-2xl p-4 sm:p-8 min-h-screen overflow-x-auto mr-6 mt-10">
+      <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 md:p-8 max-w-5xl mx-auto overflow-hidden">
         <motion.h1 
-          className="text-2xl sm:text-3xl font-bold text-purple-900 mb-6 text-center" 
+          className="text-xl sm:text-2xl font-bold text-purple-900 mb-6 text-center" 
           variants={headingVariants}
           initial="hidden"
           animate="visible"
         >
           Affiliated Colleges
         </motion.h1>
-
         <Section title="Public Sector Institutions" data={publicSectorInstitutions} />
         <Section title="Private Sector Institutions" data={privateSectorInstitutions} />
-
-        <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
-      <div className="container mx-auto text-center">
+      </div>
+    </div>
+    <div className="flex flex-col ">
+    <div className="flex-grow">
+      {/* Your main content here */}
+    </div>
+    
+    <footer className="bg-gray-800 text-white py-6 mt-4 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900 mr-6">
+      <div className="container mx-auto px-4 text-center">
         <p className="text-sm">
-        {new Date().getFullYear()} Abbottabad University of Science and Technology
+         Abbottabad University of Science and Technology
         </p>
-        <ul className="flex justify-center space-x-4 mt-2">
+        <ul className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 mt-4">
           <li>
-            <a href="/privacy-policy" className="text-white hover:underline">
+            <a
+              href="/privacy-policy"
+              className="text-white hover:underline"
+            >
               Privacy Policy
             </a>
           </li>
           <li>
-            <a href="/terms-of-service" className="text-white hover:underline">
+            <a
+              href="/terms-of-service"
+              className="text-white hover:underline"
+            >
               Terms of Service
             </a>
           </li>
@@ -94,47 +105,68 @@ const AffiliatedCollege = () => {
         </ul>
       </div>
     </footer>
-      </div>
+    
     </div>
     </>
   );
 };
 
-// Reusable Section component for rendering institution tables
 const Section = ({ title, data }) => (
-  <section className="mb-10">
+
+  <section className="mb-6">
     <motion.h2 
-      className="text-lg sm:text-xl font-semibold text-purple-800 mb-4 text-center" 
+      className="text-lg sm:text-xl text-gray-800 font-bold mb-4 text-center" 
       variants={headingVariants}
       initial="hidden"
       animate="visible"
     >
       {title}
     </motion.h2>
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow-sm">
-        <thead>
-          <tr className="bg-purple-900 text-white">
-            <th className="p-3 text-left">S.No</th>
-            <th className="p-3 text-left">Institution</th>
-            <th className="p-3 text-left">Disciplines</th>
-            <th className="p-3 text-left">Remarks</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(item => (
-            <tr key={item.sNo} className="border-b hover:bg-purple-50">
-              <td className="p-3">{item.sNo}</td>
-              <td className="p-3">{item.institution}</td>
-              <td className="p-3">{item.disciplines}</td>
-              <td className="p-3">{item.remarks}</td>
+    {/* Make the wrapper responsive */}
+    <div className="w-full overflow-x-auto">
+      {/* Flexbox for mobile responsiveness */}
+      <div className="block sm:hidden">
+        {data.map(item => (
+          <div key={item.sNo} className="bg-white p-4 mb-4 border border-gray-300 rounded-md shadow-sm">
+            <p className="font-semibold text-purple-800">S.No: <span className="font-normal">{item.sNo}</span></p>
+            <p className="font-semibold text-purple-800">Institution: <span className="font-normal">{item.institution}</span></p>
+            <p className="font-semibold text-purple-800">Disciplines: <span className="font-normal">{item.disciplines}</span></p>
+            <p className="font-semibold text-purple-800">Remarks: <span className="font-normal">{item.remarks}</span></p>
+          </div>
+        ))}
+      </div>
+
+      {/* Table for larger screens */}
+      <div className="hidden sm:block">
+        <table className="w-full min-w-[320px] table-auto bg-white border border-gray-300 rounded-md shadow-sm text-xs sm:text-sm md:text-base">
+          <thead>
+            <tr className="bg-purple-900 text-white text-left">
+              <th className="p-2 sm:p-3 text-center w-[50px]">S.No</th>
+              <th className="p-2 sm:p-3 w-[200px] break-words">Institution</th>
+              <th className="p-2 sm:p-3 w-[250px] break-words">Disciplines</th>
+              <th className="p-2 sm:p-3 w-[300px] break-words">Remarks</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map(item => (
+              <tr key={item.sNo} className="border-b hover:bg-purple-50 text-center sm:text-left">
+                <td className="p-2 sm:p-3">{item.sNo}</td>
+                <td className="p-2 sm:p-3">{item.institution}</td>
+                <td className="p-2 sm:p-3">{item.disciplines}</td>
+                <td className="p-2 sm:p-3">{item.remarks}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
   
+
+
+
+
 );
+
 
 export default AffiliatedCollege;

@@ -91,7 +91,7 @@ const AccreditationCouncil = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.5 }}
           >
-            {new Date().getFullYear()} Abbottabad University of Science and Technology
+             Abbottabad University of Science and Technology
           </motion.p>
           <ul className="flex justify-center space-x-4 mt-2">
             <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.5 }}>

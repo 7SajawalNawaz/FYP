@@ -55,7 +55,7 @@ const Presentation = () => {
       <footer className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-4 mt-8 rounded-xl">
         <div className="container mx-auto text-center">
           <p className="text-sm">
-          {new Date().getFullYear()} Abbottabad University of Science and Technology
+           Abbottabad University of Science and Technology
           </p>
           <ul className="flex justify-center space-x-4 mt-2">
             <li>

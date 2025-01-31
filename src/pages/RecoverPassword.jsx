@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "../utilis/baseUrl";
 import { NavLink, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const initialFormData = {
   email: "",
@@ -64,7 +65,13 @@ const RecoverPassword = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 px-4 py-14 pb-32">
+    <motion.div 
+        className="min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden "
+        initial={{ backgroundPosition: "0% 50%" }}
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+        style={{ background: "linear-gradient(90deg, #6a11cb, #CBC3E3, #6a11cb)", backgroundSize: "200% 200%" }}
+      >
       <div className="flex flex-col bg-purple-100 items-center justify-center py-6 px-4 md:px-8 w-full sm:w-[50%] md:w-[400px] rounded-lg shadow-md">
         <h1 className="text-2xl md:text-4xl font-bold text-purple-900 py-2">
           Recover Password
@@ -124,7 +131,7 @@ const RecoverPassword = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

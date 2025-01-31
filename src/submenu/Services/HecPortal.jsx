@@ -106,7 +106,7 @@ const HecPortal = () => {
       <footer className="bg-gradient-to-r from-purple-800 to-purple-900 text-white py-6 mt-10 rounded-xl">
         <div className="container mx-auto text-center">
           <p className="text-sm">
-          {new Date().getFullYear()} Abbottabad University of Science and Technology
+          Abbottabad University of Science and Technology
           </p>
           <ul className="flex justify-center space-x-6 mt-3">
             <li>

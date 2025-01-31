@@ -60,9 +60,10 @@ const programs = [
 
 const Program = () => {
   return (
-    <div className="flex flex-col items-center pt-14 mr-4 bg-gradient-to-r from-purple-100 to-purple-200 min-h-screen p-8 rounded-xl">
+    <>
+    <div className="flex flex-col items-center pt-14 mr-4 bg-gradient-to-r from-purple-600 to-purple-900 min-h-screen p-8 rounded-xl">
       {/* Main Heading Section */}
-      <h1 className="text-5xl font-bold text-purple-700 mb-8">
+      <h1 className="text-5xl font-bold text-white mb-8">
         Number Of Programs
       </h1>
 
@@ -87,32 +88,35 @@ const Program = () => {
             </ul>
           </motion.div>
         ))}
-        <footer className="bg-gray-800 text-white py-4 mt-8 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
-      <div className="container mx-auto text-center">
-        <p className="text-sm">
-        {new Date().getFullYear()} Abbottabad University of Science and Technology
-        </p>
-        <ul className="flex justify-center space-x-4 mt-2">
-          <li>
-            <a href="/privacy-policy" className="text-white hover:underline">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="/terms-of-service" className="text-white hover:underline">
-              Terms of Service
-            </a>
-          </li>
-          <li>
-            <a href="/contact-us" className="text-white hover:underline">
-              Contact Us
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
+        
       </div>
     </div>
+
+<footer className="bg-gray-800 text-white py-4 mt-4 mr-6 rounded-xl bg-gradient-to-r from-purple-700 to-purple-900">
+<div className="container mx-auto text-center">
+  <p className="text-sm">
+  Abbottabad University of Science and Technology
+  </p>
+  <ul className="flex justify-center space-x-4 mt-2">
+    <li>
+      <a href="/privacy-policy" className="text-white hover:underline">
+        Privacy Policy
+      </a>
+    </li>
+    <li>
+      <a href="/terms-of-service" className="text-white hover:underline">
+        Terms of Service
+      </a>
+    </li>
+    <li>
+      <a href="/contact-us" className="text-white hover:underline">
+        Contact Us
+      </a>
+    </li>
+  </ul>
+</div>
+</footer>
+</>
   );
 };
 
